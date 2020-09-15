@@ -1,3 +1,5 @@
+import pytest
+
 from indy_common.config_helper import NodeConfigHelper
 from indy_node.test.conftest import sdk_node_theta_added
 from indy_node.test.helper import TestNode
@@ -13,6 +15,7 @@ from plenum.test.pool_transactions.helper import demote_node, promote_node
 nodeCount = 7
 
 
+@pytest.mark.suspension
 def testSuspendNode(looper, sdk_pool_handle, sdk_wallet_trustee, nodeSet,
                     tdir, tconf, allPluginsPath):
     """
@@ -51,6 +54,7 @@ def _wait_view_change_finish(looper, nodes, view_no):
     ensureElectionsDone(looper=looper, nodes=nodes)
 
 
+@pytest.mark.suspension
 def testDemoteNodeWhichWasNeverActive(looper, nodeSet, sdk_pool_handle,
                                       sdk_wallet_trustee, tdir, tconf,
                                       allPluginsPath):

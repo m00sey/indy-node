@@ -1,0 +1,25 @@
+name: indy-node-release
+on: [ release ]
+
+jobs:
+  build-common:
+    name: Build Indy Common
+    runs-on: ubuntu-18.04
+    #TODO: move this to hyperledger?
+    container: m00sey/indy-node-build:latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: pip install .[tests]
+
+      - name: Run Indy Common tests
+        run: python -m pytest -l -vv --junitxml=test-result-common.xml indy_common
+
+      - name: Publish Test Report
+        uses: scacap/action-surefire-report@v1
+        with:
+          check_name: Indy Common Test Report
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          report_paths: test-result-common.xml

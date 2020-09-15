@@ -1,0 +1,86 @@
+name: indy-node-build
+on: [ push, pull_request ]
+
+jobs:
+  decorator-checks:
+    name: Run decorator checks
+    needs: lint
+    runs-on: ubuntu-18.04
+    #TODO: move this to hyperledger?
+    container: m00sey/indy-node-build:latest
+    outputs:
+      matrix-common: ${{ steps.ctd.outputs.matrix-common }}
+      matrix-node: ${{ steps.ctd.outputs.matrix-node }}
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Check test decorators
+        id: ctd
+        run: |
+          echo "::set-output name=matrix-common::$(python scripts/pytest_mark_check.py indy_common)"
+          echo "::set-output name=matrix-node::$(python scripts/pytest_mark_check.py indy_node)"
+
+  indy_common:
+    name: Build Indy Common
+    needs: decorator-checks
+    runs-on: ubuntu-18.04
+    #TODO: move this to hyperledger?
+    container: m00sey/indy-node-build:latest
+    strategy:
+      matrix: ${{fromJson(needs.decorator-checks.outputs.matrix-common)}}
+      fail-fast: false
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: pip install .[tests]
+
+      - name: Run Indy Common tests
+        run: python -m pytest -l -m ${{ matrix.module }} -vv --junitxml=test-result-common-${{ matrix.module }}.xml indy_common
+
+      - name: Publish Test Report
+        uses: scacap/action-surefire-report@v1
+        with:
+          check_name: Indy Common ${{ matrix.module }} Test Report
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          report_paths: test-result-common-${{ matrix.module }}.xml
+
+  indy_node:
+    name: Build Indy Node
+    needs: decorator-checks
+    runs-on: ubuntu-18.04
+    #TODO: move this to hyperledger?
+    container: m00sey/indy-node-build:latest
+    strategy:
+      matrix: ${{fromJson(needs.decorator-checks.outputs.matrix-node)}}
+      fail-fast: false
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: pip install .[tests]
+
+      - name: Run Indy Node ${{ matrix.module }} tests
+        run: python -m pytest -l -m ${{ matrix.module }} -vv --junitxml=test-result-node-${{ matrix.module }}.xml indy_node
+
+      - name: Publish Test Report
+        uses: scacap/action-surefire-report@v1
+        with:
+          check_name: Indy Node ${{ matrix.module }} Test Report
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          report_paths: test-result-node-${{ matrix.module }}.xml
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-18.04
+    #TODO: move this to hyperledger?
+    container: m00sey/indy-node-lint:latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: flake8
+        run: python3 -m flake8

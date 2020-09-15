@@ -44,20 +44,24 @@ def another_endorser1(looper, nodeSet, sdk_pool_handle, sdk_wallet_trustee):
                            sdk_wallet_trustee, 'newEndorser1', ENDORSER_STRING)
 
 
+@pytest.mark.suspension
 def testTrusteeAddingAnotherTrustee(another_trustee):
     pass
 
 
+@pytest.mark.suspension
 def testTrusteeAddingSteward(looper, sdk_pool_handle, another_steward):
     # The new Steward adds a ENDORSER
     sdk_add_new_nym(looper, sdk_pool_handle, another_steward, role=ENDORSER_STRING)
 
 
+@pytest.mark.suspension
 def testTrusteeAddingEndorser(looper, sdk_pool_handle, another_endorser):
     # The new TEndorser adds a NYM
     sdk_add_new_nym(looper, sdk_pool_handle, another_endorser)
 
 
+@pytest.mark.suspension
 def testStewardSuspensionByTrustee(looper, sdk_pool_handle,
                                    another_trustee, another_steward):
     _, did_stew = another_steward
@@ -67,6 +71,7 @@ def testStewardSuspensionByTrustee(looper, sdk_pool_handle,
                         another_steward, role=ENDORSER_STRING)
 
 
+@pytest.mark.suspension
 def testEndorserSuspensionByTrustee(
         looper, sdk_pool_handle, another_trustee, another_endorser):
     _, did_ta = another_endorser
@@ -76,6 +81,7 @@ def testEndorserSuspensionByTrustee(
                         another_endorser, alias=randomString())
 
 
+@pytest.mark.suspension
 def testTrusteeSuspensionByTrustee(looper, sdk_pool_handle, sdk_wallet_trustee,
                                    another_trustee, another_steward1):
     # trustee suspension by trustee is succeed
@@ -91,6 +97,7 @@ def testTrusteeSuspensionByTrustee(looper, sdk_pool_handle, sdk_wallet_trustee,
 
 # Keep the test below at the end of the suite since it will make one of the
 # nodes inactive, unless you are planning to add new nodes.
+@pytest.mark.suspension
 def testValidatorSuspensionByTrustee(sdk_wallet_trustee, sdk_pool_handle, looper, nodeSet):
     node = nodeSet[-1]
     demote_node(looper, sdk_wallet_trustee, sdk_pool_handle, node)

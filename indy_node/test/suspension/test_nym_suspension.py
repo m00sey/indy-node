@@ -7,6 +7,7 @@ from plenum.common.exceptions import RequestRejectedException, RequestNackedExce
 from plenum.test.pool_transactions.helper import sdk_add_new_nym
 
 
+@pytest.mark.suspension
 def testTrusteeSuspendingEndorser(looper, sdk_pool_handle, sdk_wallet_trustee,
                                      sdk_wallet_endorser):
     _, did = sdk_wallet_endorser
@@ -16,6 +17,7 @@ def testTrusteeSuspendingEndorser(looper, sdk_pool_handle, sdk_wallet_trustee,
     e.match('Rule for this action is')
 
 
+@pytest.mark.suspension
 def testTrusteeSuspendingTrustee(looper, sdk_pool_handle, sdk_wallet_trustee,
                                  another_trustee):
     _, did = another_trustee
@@ -25,6 +27,7 @@ def testTrusteeSuspendingTrustee(looper, sdk_pool_handle, sdk_wallet_trustee,
     e.match('Rule for this action is')
 
 
+@pytest.mark.suspension
 def testTrusteeSuspendingSteward(looper, sdk_pool_handle, sdk_wallet_trustee,
                                  sdk_wallet_steward):
     _, did = sdk_wallet_steward
@@ -34,6 +37,7 @@ def testTrusteeSuspendingSteward(looper, sdk_pool_handle, sdk_wallet_trustee,
     e.match('Rule for this action is')
 
 
+@pytest.mark.suspension
 def testEndorserSuspendingHimselfByVerkeyFlush(looper, sdk_pool_handle,
                                                   sdk_wallet_endorser):
     # The endorser has already lost its role due to previous tests,

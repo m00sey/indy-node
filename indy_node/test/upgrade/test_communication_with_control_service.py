@@ -1,6 +1,7 @@
 import asyncio
 from datetime import datetime
 
+import pytest
 from stp_core.loop.eventually import eventuallySoon
 
 from indy_node.server.upgrade_log import UpgradeLogData
@@ -46,6 +47,7 @@ def _checkFuture(future):
     return _check
 
 
+@pytest.mark.upgrade
 def testScheduleNodeUpgrade(tconf, nodeSet):
     """
     Tests that upgrade scheduling works. For that it starts mock
