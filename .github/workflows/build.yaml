@@ -10,7 +10,7 @@ jobs:
         working-directory: /home/indy
     container: m00sey/indy-node-build:1.0
     steps:
-      - run: echo $USER
+      - run: pwd
 
       - name: Check out code
         uses: actions/checkout@v2
