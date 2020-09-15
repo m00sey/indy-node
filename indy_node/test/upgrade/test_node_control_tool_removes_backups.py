@@ -3,6 +3,7 @@ import os
 import functools
 import shutil
 
+import pytest
 from stp_core.loop.eventually import eventually
 from stp_core.common.log import getlogger
 
@@ -23,6 +24,7 @@ whitelist = ['Unexpected error in _upgrade test']
 logger = getlogger()
 
 
+@pytest.mark.upgrade
 def testNodeControlRemovesBackups(monkeypatch, tdir, looper, tconf):
     version = bumpedVersion()
     stdout = 'teststdout'

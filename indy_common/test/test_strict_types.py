@@ -20,20 +20,24 @@ def takesUnion(s: typing.Union[str, None]) -> int:
         pass
 
 
+@pytest.mark.test
 def testInvalidArgumentType():
     with pytest.raises(TypeError):
         takesStr(1)
 
 
+@pytest.mark.test
 def testInvalidReturnType():
     with pytest.raises(TypeError):
         assert takesStr('return None')
 
 
+@pytest.mark.test
 def testValidInputAndReturn():
     takesStr('1')
 
 
+@pytest.mark.test
 def testWorksWithComplexTypes():
     takesUnion('1')
 
@@ -60,6 +64,7 @@ def t():
     return TestClass()
 
 
+@pytest.mark.test
 def testWholeClassInvalidArgumentType(t):
     with pytest.raises(TypeError):
         t.takesStr(1)
@@ -67,12 +72,14 @@ def testWholeClassInvalidArgumentType(t):
         t.takesInt('1')
 
 
+@pytest.mark.test
 def testWholeClassInvalidReturnType(t):
     with pytest.raises(TypeError):
         assert t.takesStr('return None')
         assert t.takesInt(457)
 
 
+@pytest.mark.test
 def testWholeClassValidInputAndReturn(t):
     t.takesStr('1')
     t.takesInt(1)

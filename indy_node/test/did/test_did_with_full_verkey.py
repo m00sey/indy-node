@@ -1,11 +1,15 @@
+import pytest
+
 from indy_node.test.did.conftest import nym_get
 from indy_node.test.helper import sdk_rotate_verkey
 
 
+@pytest.mark.did
 def testAddDidWithVerkey(nym_full_vk):
     pass
 
 
+@pytest.mark.did
 def testRetrieveFullVerkey(looper, tconf, nodeSet, sdk_pool_handle, sdk_wallet_trustee, nym_full_vk):
     nwh, ndid, nvk = nym_full_vk
     resp_data = nym_get(looper, sdk_pool_handle, sdk_wallet_trustee, ndid)
@@ -13,12 +17,14 @@ def testRetrieveFullVerkey(looper, tconf, nodeSet, sdk_pool_handle, sdk_wallet_t
     assert nvk == resp_data[1]
 
 
+@pytest.mark.did
 def testChangeVerkeyToNewVerkey(looper, tconf, nodeSet, sdk_pool_handle, nym_full_vk):
     wh, did, nvk = nym_full_vk
     new_verkey = sdk_rotate_verkey(looper, sdk_pool_handle, wh, did, did)
     assert nvk != new_verkey
 
 
+@pytest.mark.did
 def testRetrieveChangedVerkey(looper, tconf, nodeSet, sdk_pool_handle, sdk_wallet_trustee, nym_full_vk):
     wh, did, vk = nym_full_vk
     new_vk = sdk_rotate_verkey(looper, sdk_pool_handle, wh, did, did)
@@ -28,6 +34,7 @@ def testRetrieveChangedVerkey(looper, tconf, nodeSet, sdk_pool_handle, sdk_walle
     assert new_vk == resp_data[1]
 
 
+@pytest.mark.did
 def testVerifySigWithChangedVerkey(looper, tconf, nodeSet, sdk_pool_handle, nym_full_vk):
     wh, did, vk = nym_full_vk
     new_vk = sdk_rotate_verkey(looper, sdk_pool_handle, wh, did, did)
