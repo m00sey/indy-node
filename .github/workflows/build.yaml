@@ -15,7 +15,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
         with:
-          - path: /home/indy
+          path: /home/indy
 
       - name: Install dependencies
         run: pip install -e .[tests]
