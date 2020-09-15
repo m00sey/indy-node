@@ -5,13 +5,15 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-18.04
+    defaults:
+      run:
+        working-directory: ~/
     container: m00sey/indy-node-build:1.0
     steps:
       - run: echo $USER
 
       - name: Check out code
         uses: actions/checkout@v2
-      - run: pwd
 
       - name: Install dependencies
         run: pip install -e .[tests]
