@@ -7,10 +7,14 @@ jobs:
     runs-on: ubuntu-18.04
     container: m00sey/indy-node-build:latest
     steps:
-      - run: pwd
-
       - name: Check out code
         uses: actions/checkout@v2
 
       - name: Install dependencies
         run: pip install -e .[tests]
+
+      - name: Run Indy Node tests
+        run: python -m pytest -l -vv --junitxml=out.txt indy_node
+
+      - name: Run Indy Common tests
+        run: python -m pytest -l -vv --junitxml=out.txt indy_common
