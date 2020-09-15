@@ -1,5 +1,7 @@
 from copy import deepcopy
 
+import pytest
+
 from indy_common.constants import SHA256
 from indy_node.test import waits
 from indy_node.test.upgrade.helper import bumpVersion, checkUpgradeScheduled, \
@@ -9,6 +11,7 @@ from plenum.common.util import randomString
 from stp_core.loop.eventually import eventually
 
 
+@pytest.mark.upgrade
 def testRescheduleUpgradeToLowerVersionThanPreviouslyScheduled(
         looper, tconf, nodeSet, validUpgrade, sdk_pool_handle, sdk_wallet_trustee):
     """

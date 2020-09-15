@@ -1,5 +1,7 @@
 from copy import deepcopy
 
+import pytest
+
 from indy_common.constants import CANCEL, \
     ACTION, SCHEDULE, JUSTIFICATION
 from indy_node.test import waits
@@ -9,6 +11,7 @@ from stp_core.loop.eventually import eventually
 whitelist = ['Failed to upgrade node']
 
 
+@pytest.mark.upgrade
 def testTrustyCancelsUpgrade(validUpgradeSent, looper, nodeSet, sdk_pool_handle,
                              sdk_wallet_trustee, validUpgrade):
     validUpgradeCopy = deepcopy(validUpgrade)

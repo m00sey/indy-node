@@ -31,6 +31,7 @@ def sdk_pool_bad_config_sent(looper, sdk_pool_handle, sdk_wallet_trustee, change
     return req
 
 
+@pytest.mark.pool_config
 def testPoolConfigInvalidSyntax(looper, sdk_pool_handle, sdk_wallet_trustee, poolConfigWTFF):
     req = sdk_pool_bad_config_sent(looper, sdk_pool_handle, sdk_wallet_trustee,
                                    'wites', 'force', True, False)
@@ -43,6 +44,7 @@ def testPoolConfigInvalidSyntax(looper, sdk_pool_handle, sdk_wallet_trustee, poo
     sdk_get_bad_response(looper, [req], RequestNackedException, 'expected types \'bool\', got \'int\'')
 
 
+@pytest.mark.pool_config
 def testPoolConfigWritableFalse(looper, sdk_pool_handle, sdk_wallet_trustee, poolConfigWFFF):
     sdk_ensure_pool_config_sent(looper, sdk_pool_handle, sdk_wallet_trustee,
                                 poolConfigWFFF)
@@ -51,6 +53,7 @@ def testPoolConfigWritableFalse(looper, sdk_pool_handle, sdk_wallet_trustee, poo
     e.match('Pool is in readonly mode')
 
 
+@pytest.mark.pool_config
 def testPoolConfigWritableTrue(looper, sdk_pool_handle, sdk_wallet_trustee, poolConfigWTFF):
     with pytest.raises(RequestNackedException) as e:
         sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -60,6 +63,7 @@ def testPoolConfigWritableTrue(looper, sdk_pool_handle, sdk_wallet_trustee, pool
     sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
 
 
+@pytest.mark.pool_config
 def testPoolConfigWritableFalseCanRead(looper, sdk_pool_handle, sdk_wallet_trustee, poolConfigWFFF):
     _, did = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
     get_nym(looper, sdk_pool_handle, sdk_wallet_trustee, did)
@@ -71,12 +75,13 @@ def testPoolConfigWritableFalseCanRead(looper, sdk_pool_handle, sdk_wallet_trust
     get_nym(looper, sdk_pool_handle, sdk_wallet_trustee, did)
 
 
+@pytest.mark.pool_config
 def testPoolUpgradeOnReadonlyPool(
         looper, nodeSet, sdk_pool_handle, sdk_wallet_trustee, validUpgrade, poolConfigWFFF):
     sdk_ensure_pool_config_sent(looper, sdk_pool_handle, sdk_wallet_trustee,
                                 poolConfigWFFF)
     sdk_ensure_upgrade_sent(looper, sdk_pool_handle, sdk_wallet_trustee,
-                     validUpgrade)
+                            validUpgrade)
 
     for node in nodeSet:
         assert len(node.upgrader.aqStash) > 0
