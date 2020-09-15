@@ -1,27 +1,25 @@
-import pytest
-import time
 import json
+import time
 
+import pytest
 from indy.anoncreds import issuer_create_and_store_credential_def
 from indy.ledger import build_cred_def_request
-
-from indy_common.state.domain import make_state_path_for_claim_def
-from indy_node.test.anon_creds.helper import get_cred_def_id, create_revoc_reg, create_revoc_reg_entry
+from plenum.common.txn_util import reqToTxn, append_txn_metadata
+from plenum.common.types import f, OPERATION
 from plenum.common.util import randomString
+from plenum.test.helper import sdk_sign_request_from_dict, sdk_send_and_check, sdk_sign_and_submit_req, \
+    sdk_get_and_check_replies
+
 from indy_common.constants import REVOC_REG_ENTRY, REVOC_REG_DEF_ID, ISSUED, \
     REVOKED, PREV_ACCUM, ACCUM, REVOC_REG_DEF, ISSUANCE_BY_DEFAULT, \
     CRED_DEF_ID, VALUE, TAG, ISSUANCE_ON_DEMAND, ID, \
     TXN_TYPE, REVOC_TYPE, ISSUANCE_TYPE, MAX_CRED_NUM, TAILS_HASH, TAILS_LOCATION, PUBLIC_KEYS, \
-    GET_REVOC_REG, TIMESTAMP, CLAIM_DEF_SCHEMA_REF, CLAIM_DEF_SIGNATURE_TYPE, \
+    CLAIM_DEF_SCHEMA_REF, CLAIM_DEF_SIGNATURE_TYPE, \
     CLAIM_DEF_TAG
-from indy_common.types import Request
 from indy_common.state import domain
-from plenum.test.helper import sdk_sign_request_from_dict, sdk_send_and_check, sdk_sign_and_submit_req, \
-    sdk_get_and_check_replies
-from plenum.common.txn_util import reqToTxn, append_txn_metadata
-from plenum.common.types import f, OPERATION
-
-from plenum.test.conftest import sdk_wallet_client
+from indy_common.state.domain import make_state_path_for_claim_def
+from indy_common.types import Request
+from indy_node.test.anon_creds.helper import get_cred_def_id, create_revoc_reg, create_revoc_reg_entry
 from indy_node.test.schema.test_send_get_schema import send_schema_req
 
 CRED_DEF_VERSION = '1.0'

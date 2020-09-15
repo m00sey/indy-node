@@ -44,6 +44,7 @@ def test_node_control_tool_restart(looper, tdir, monkeypatch, tconf):
         nct.stop()
 
 
+@pytest.mark.pool_restart
 def test_communication_with_node_control_tool(looper, tdir, tconf, monkeypatch):
     received = m.list()
     msg = RESTART_MESSAGE

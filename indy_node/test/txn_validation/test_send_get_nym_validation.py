@@ -14,17 +14,20 @@ from plenum.common.constants import IDENTIFIER
 from plenum.test.pool_transactions.helper import sdk_add_new_nym, sdk_sign_and_send_prepared_request
 
 
+@pytest.mark.txn_validation
 def testSendGetNymSucceedsForExistingUuidDest(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
     get_nym(looper, sdk_pool_handle, sdk_wallet_trustee, new_wallet[1])
 
 
+@pytest.mark.txn_validation
 def testSendGetNymFailsForNotExistingUuidDest(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     get_nym(looper, sdk_pool_handle, sdk_wallet_trustee, createUuidIdentifier())
 
 
+@pytest.mark.txn_validation
 def test_get_nym_returns_role(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     current_role = ENDORSER_STRING
@@ -39,11 +42,13 @@ def test_get_nym_returns_role(
     get_nym(looper, sdk_pool_handle, sdk_wallet_trustee, createUuidIdentifier())
 
 
+@pytest.mark.txn_validation
 def testSendGetNymFailsIfCryptonymIsPassedAsDest(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     get_nym(looper, sdk_pool_handle, sdk_wallet_trustee, createCryptonym())
 
 
+@pytest.mark.txn_validation
 def testSendGetNymFailsIfDestIsPassedInHexFormat(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     # Sometimes hex representation can use only base58 compatible characters
@@ -65,6 +70,7 @@ def testSendGetNymFailsIfDestIsPassedInHexFormat(
     e.match('should not contain the following chars')
 
 
+@pytest.mark.txn_validation
 def testSendGetNymFailsIfDestIsInvalid(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     uuidIdentifier = createUuidIdentifier()
@@ -79,6 +85,7 @@ def testSendGetNymFailsIfDestIsInvalid(
     e.match('should be one of \[16, 32\]')
 
 
+@pytest.mark.txn_validation
 def testSendGetNymHasInvalidSyntaxIfDestIsEmpty(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     uuidIdentifier = createUuidIdentifier()

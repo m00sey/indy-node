@@ -1,0 +1,66 @@
+name: indy-node-build
+on: [ push, pull_request ]
+
+jobs:
+  build-common:
+    name: Build Indy Common
+    runs-on: ubuntu-18.04
+    #TODO: move this to hyperledger?
+    container: m00sey/indy-node-build:latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: pip install .[tests]
+
+      - name: Run Indy Common tests
+        run: python -m pytest -l -vv --junitxml=test-result-common.xml indy_common
+
+      - name: Publish Test Report
+        uses: scacap/action-surefire-report@v1
+        with:
+          check_name: Indy Common Test Report
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          report_paths: test-result-common.xml
+
+  build-indy:
+    name: Build Indy Node
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        module: [ upgrade, auth_rule, anon_creds, api, attrib_txn, claim_def, did, endorser, node_control_utils,
+                  node_txn, package, persistance, pool_config, pool_restart, replay, request_handlers,
+                  request_propagates, rich_schema, schema, state_proof, suspension, tools, txn_author_agreement,
+                  txn_validation, validator_info, view_change, write_permission ]
+      fail-fast: false
+    #TODO: move this to hyperledger?
+    container: m00sey/indy-node-build:latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: pip install .[tests]
+
+      - name: Run Indy Node ${{ matrix.module }} tests
+        run: python -m pytest -l -m ${{ matrix.module }} -vv --junitxml=test-result-node-${{ matrix.module }}.xml indy_node
+
+      - name: Publish Test Report
+        uses: scacap/action-surefire-report@v1
+        with:
+          check_name: Indy Node ${{ matrix.module }} Test Report
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          report_paths: test-result-node-${{ matrix.module }}.xml
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-18.04
+    #TODO: move this to hyperledger?
+    container: m00sey/indy-node-lint:latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: flake8
+        run: python3 -m flake8

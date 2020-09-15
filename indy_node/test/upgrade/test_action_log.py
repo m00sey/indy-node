@@ -133,10 +133,12 @@ def test_obj():
 # TESTS
 
 
+@pytest.mark.upgrade
 def test_csv_serializer_iter(test_obj):
     assert list(iter(test_obj)) == [test_obj.int_, test_obj.ts, test_obj.str_]
 
 
+@pytest.mark.upgrade
 def test_csv_serializer_pack_unpack():
     delimiter = '_'
     args = (5,)
@@ -149,6 +151,7 @@ def test_csv_serializer_pack_unpack():
     )
 
 
+@pytest.mark.upgrade
 def test_action_log_data_init(valid_ts):
     assert ActionLogData(valid_ts).when == valid_ts
     assert ActionLogData(valid_ts.isoformat()).when == valid_ts
@@ -157,6 +160,7 @@ def test_action_log_data_init(valid_ts):
         ActionLogData(123)
 
 
+@pytest.mark.upgrade
 def test_action_log_event_init_invalid_ts(valid_ts, valid_event):
     with pytest.raises(TypeError):
         ActionLogEvent(
@@ -164,6 +168,7 @@ def test_action_log_event_init_invalid_ts(valid_ts, valid_event):
         )
 
 
+@pytest.mark.upgrade
 def test_action_log_event_init_valid_ts_none(valid_event, valid_data):
     ts1 = datetime.utcnow()
     ev = ActionLogEvent(None, valid_event, valid_data, types=Events)
@@ -172,12 +177,14 @@ def test_action_log_event_init_valid_ts_none(valid_event, valid_data):
     assert ts1 <= ev.ts <= ts2
 
 
+@pytest.mark.upgrade
 def test_action_log_event_init_valid_ts_datetime(
         valid_ts, valid_event, valid_data):
     ev = ActionLogEvent(valid_ts, valid_event, valid_data, types=Events)
     assert ev.ts == valid_ts
 
 
+@pytest.mark.upgrade
 def test_action_log_event_init_valid_ts_str(
         valid_ts, valid_event, valid_data):
     ev = ActionLogEvent(valid_ts.isoformat(), valid_event,
@@ -185,6 +192,7 @@ def test_action_log_event_init_valid_ts_str(
     assert ev.ts == valid_ts
 
 
+@pytest.mark.upgrade
 def test_action_log_event_init_invalid_ev_type(valid_ts, valid_data):
     _Events = Enum('_Events', 'ev1 ev2 ev3')
 
@@ -204,6 +212,7 @@ def test_action_log_event_init_invalid_ev_type(valid_ts, valid_data):
         )
 
 
+@pytest.mark.upgrade
 def test_action_log_event_init_valid_ev_type(valid_ts, valid_data):
     _Events = Enum('_Events', 'ev1 ev2 ev3')
 
@@ -216,6 +225,7 @@ def test_action_log_event_init_valid_ev_type(valid_ts, valid_data):
     ).ev_type == _Events.ev3
 
 
+@pytest.mark.upgrade
 def test_action_log_event_init_invalid_data(valid_ts, valid_event):
     # data_class is not specified and data not an instance of CsvSerializer
     with pytest.raises(TypeError):
@@ -229,12 +239,14 @@ def test_action_log_event_init_invalid_data(valid_ts, valid_event):
         )
 
 
+@pytest.mark.upgrade
 def test_action_log_event_init_valid_data(valid_ts, valid_event, valid_data):
     assert ActionLogEvent(
         valid_ts, valid_event, valid_data, types=Events
     ).data == valid_data
 
 
+@pytest.mark.upgrade
 def test_action_log_event_init_data_class_passed(valid_ts, valid_event):
 
     class SomeClass(CsvSerializer):
@@ -252,6 +264,7 @@ def test_action_log_event_init_data_class_passed(valid_ts, valid_event):
     ev.data == SomeClass('_item1', '_item2', '_item3')
 
 
+@pytest.mark.upgrade
 def test_action_log_event_pack_unpack(valid_ts, valid_event, valid_data):
     delimiter = '|'
     ev = ActionLogEvent(valid_ts, valid_event, valid_data, types=Events)
@@ -260,6 +273,7 @@ def test_action_log_event_pack_unpack(valid_ts, valid_event, valid_data):
         data_class=LogData, types=Events)
 
 
+@pytest.mark.upgrade
 def test_action_log_api_basic(
         action_log_prepared, log_file_path,
         log_delimiter, prepared_data):
@@ -277,6 +291,7 @@ def test_action_log_api_basic(
         assert hasattr(action_log_prepared, "append_{}".format(ev_type.name))
 
 
+@pytest.mark.upgrade
 @pytest.mark.parametrize('ev_type', Events)
 def test_action_log_append(action_log, ev_type):
     ev_data = LogData('1', 2)
@@ -285,6 +300,7 @@ def test_action_log_append(action_log, ev_type):
     assert action_log.last_event.ev_type == ev_type
 
 
+@pytest.mark.upgrade
 def test_action_log_write_file(action_log):
     ev_data = LogData('1', 2)
 
@@ -303,6 +319,7 @@ def test_action_log_write_file(action_log):
     check_log(3)
 
 
+@pytest.mark.upgrade
 def test_action_log_load(action_log_prepared):
     new_log = ActionTestLog(
         action_log_prepared.file_path,

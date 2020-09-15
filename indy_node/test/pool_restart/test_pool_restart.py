@@ -2,6 +2,7 @@ import asyncio
 from datetime import datetime, timedelta
 
 import dateutil
+import pytest
 from jsonpickle import json
 
 from indy_node.server.restart_log import RestartLog, RestartLogData
@@ -14,6 +15,7 @@ from plenum.common.types import f
 from plenum.test.testing_utils import FakeSomething
 
 
+@pytest.mark.pool_restart
 def test_pool_restart(
         sdk_pool_handle, sdk_wallet_trustee, looper, tconf, txnPoolNodeSet):
 
