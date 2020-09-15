@@ -24,6 +24,9 @@ var/
 *.egg
 *.eggs
 
+# Needed for GitHub Actions
+!.github/workflows/build
+
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
