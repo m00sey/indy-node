@@ -14,7 +14,7 @@ jobs:
         run: pip install -e .[tests]
 
       - name: Run Indy Node tests
-        run: python -m pytest -l -vv --junitxml=out.txt indy_node
+        run: PYTHONASYNCIODEBUG=0 python runner.py --pytest python -m pytest -l -vv --dir indy_node --output out.txt --test-only-slice 1/1
 
       - name: Run Indy Common tests
         run: python -m pytest -l -vv --junitxml=out.txt indy_common
