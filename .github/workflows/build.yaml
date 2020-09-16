@@ -7,14 +7,17 @@ jobs:
     runs-on: ubuntu-18.04
     container: m00sey/indy-node-build:latest
     steps:
+      - run: echo ${NODE_NAME}
+      - run: echo $NODE_NAME
+
       - name: Check out code
         uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: pip install -e .[tests]
+        run: pip install .[tests]
 
       - name: Run Indy Node tests
-        run: PYTHONASYNCIODEBUG=0 python runner.py --pytest python -m pytest -l -vv --dir indy_node --output out.txt --test-only-slice 1/1
-
+        run: python -m pytest -l -vv --junitxml=test-result-node.xml indy_node
+        
       - name: Run Indy Common tests
-        run: python -m pytest -l -vv --junitxml=out.txt indy_common
+        run: python -m pytest -l -vv --junitxml=test-result-common.xml indy_common
