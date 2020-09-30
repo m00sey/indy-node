@@ -1,0 +1,50 @@
+name: build
+on: [ push, pull_request ]
+
+jobs:
+  build-common:
+    name: Build INdy Common
+    runs-on: ubuntu-18.04
+    container: m00sey/indy-node-build:latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: pip install .[tests]
+
+      - name: Run Indy Common tests
+        run: python -m pytest -l -vv --junitxml=test-result-common.xml indy_common
+
+      - name: wat
+        run: ls -la test-result-node.xml
+
+
+  build-indy:
+    name: Build Indy Node
+    runs-on: ubuntu-18.04
+    container: m00sey/indy-node-build:latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: pip install .[tests]
+
+      - name: Run Indy Node tests
+        run: python -m pytest -l -vv --junitxml=test-result-node.xml indy_node
+
+      - name: wat
+        run: ls -la test-result-node.xml
+
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-18.04
+    container: m00sey/indy-node-lint:latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: flake8
+        run: python3 -m flake8

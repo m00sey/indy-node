@@ -81,3 +81,6 @@ docs/source/api_docs/
 
 # Vagrant files
 .vagrant
+
+# test output from working with GitHub actions
+test-result-node.xml
