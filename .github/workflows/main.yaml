@@ -19,6 +19,7 @@ jobs:
       - name: Publish Test Report
         uses: scacap/action-surefire-report@v1
         with:
+          check_name: Indy Common Test Report
           github_token: ${{ secrets.GITHUB_TOKEN }}
           report_paths: test-result-common.xml
 
@@ -35,6 +36,13 @@ jobs:
 
       - name: Run Indy Node tests
         run: python -m pytest -l -vv --junitxml=test-result-node.xml indy_node
+
+      - name: Publish Test Report
+        uses: scacap/action-surefire-report@v1
+        with:
+          check_name: Indy Node Test Report
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          report_paths: test-result-common.xml
 
   lint:
     name: Lint
