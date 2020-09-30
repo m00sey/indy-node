@@ -16,8 +16,10 @@ jobs:
       - name: Run Indy Common tests
         run: python -m pytest -l -vv --junitxml=test-result-common.xml indy_common
 
-      - name: wat
-        run: ls -la test-result-node.xml
+      - name: Publish Test Report
+        uses: scacap/action-surefire-report@v1
+        with:
+          report_paths: test-result-common.xml
 
 
   build-indy:
@@ -33,9 +35,6 @@ jobs:
 
       - name: Run Indy Node tests
         run: python -m pytest -l -vv --junitxml=test-result-node.xml indy_node
-
-      - name: wat
-        run: ls -la test-result-node.xml
 
 
   lint:
