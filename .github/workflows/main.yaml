@@ -38,7 +38,8 @@ jobs:
         id: cache
         with:
           path: ~/.cache/pip
-
+          key: testdeps
+          
       - name: Install dependencies
         run: pip install .[tests]
 
