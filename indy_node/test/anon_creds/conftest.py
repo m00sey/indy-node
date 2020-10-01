@@ -31,7 +31,7 @@ SCHEMA_VERSION = '1.0'
 def pytest_collection_modifyitems(items):
     for item in items:
         if "revoc" in item.nodeid:
-            item.add_marker(pytest.mark.interface)
+            item.add_marker(pytest.mark.revoc)
 
 
 @pytest.fixture(scope="module")
