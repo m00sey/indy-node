@@ -28,6 +28,12 @@ CRED_DEF_VERSION = '1.0'
 SCHEMA_VERSION = '1.0'
 
 
+def pytest_collection_modifyitems(items):
+    for item in items:
+        if "revoc" in item.nodeid:
+            item.add_marker(pytest.mark.interface)
+
+
 @pytest.fixture(scope="module")
 def claim_def(looper, sdk_wallet_handle, sdk_wallet_steward, send_schema_req):
     schema = json.loads(send_schema_req[0])

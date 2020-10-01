@@ -35,7 +35,7 @@ jobs:
         run: pip install .[tests]
 
       - name: Run Indy Node tests
-        run: python -m pytest -l -vv --junitxml=test-result-node.xml indy_node
+        run: python -m pytest -l -m revoc -vv --junitxml=test-result-node.xml indy_node
 
       - name: Publish Test Report
         uses: scacap/action-surefire-report@v1
