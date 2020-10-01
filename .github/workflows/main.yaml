@@ -26,6 +26,9 @@ jobs:
   build-indy:
     name: Build Indy Node
     runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        module: [ revoc, suspension ]
     container: m00sey/indy-node-build:latest
     steps:
       - name: Check out code
@@ -34,15 +37,15 @@ jobs:
       - name: Install dependencies
         run: pip install .[tests]
 
-      - name: Run Indy Node tests
-        run: python -m pytest -l -m revoc -vv --junitxml=test-result-node.xml indy_node
+      - name: Run Indy Node ${{ matrix.module }} tests
+        run: python -m pytest -l -m revoc -vv --junitxml=test-result-node-${{ matrix.module }}.xml indy_node
 
       - name: Publish Test Report
         uses: scacap/action-surefire-report@v1
         with:
-          check_name: Indy Node Test Report
+          check_name: Indy Node ${{ matrix.module }} Test Report
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          report_paths: test-result-node.xml
+          report_paths: test-result-node-${{ matrix.module }}.xml
 
   lint:
     name: Lint
