@@ -20,6 +20,7 @@ from indy_common.state import domain
 from indy_common.state.domain import make_state_path_for_claim_def
 from indy_common.types import Request
 from indy_node.test.anon_creds.helper import get_cred_def_id, create_revoc_reg, create_revoc_reg_entry
+from indy_node.test.schema.test_send_get_schema import send_schema_req
 
 CRED_DEF_VERSION = '1.0'
 SCHEMA_VERSION = '1.0'
