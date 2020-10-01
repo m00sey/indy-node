@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        module: [ revoc, suspension ]
+        module: [ revoc, suspension, endorser, did, claim_def ]
     container: m00sey/indy-node-build:latest
     steps:
       - name: Check out code
@@ -39,7 +39,7 @@ jobs:
         with:
           path: ~/.cache/pip
           key: testdeps
-          
+
       - name: Install dependencies
         run: pip install .[tests]
 
