@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        module: [ revoc, suspension, endorser, did, claim_def ]
+        module: [ revoc, suspension, endorser, did, claim_def, reply, attrib_txn ]
     container: m00sey/indy-node-build:latest
     steps:
       - name: Check out code
