@@ -17,6 +17,7 @@ m = multiprocessing.Manager()
 whitelist = ['Unexpected error in _upgrade test']
 
 
+@pytest.mark.upgrade
 def testNodeControlReceivesMessages(monkeypatch, looper, tdir, tconf):
     received = m.list()
     version = bumpedVersion()

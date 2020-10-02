@@ -46,6 +46,7 @@ def _checkFuture(future):
     return _check
 
 
+@pytest.mark.upgrade
 def testScheduleNodeUpgrade(tconf, nodeSet):
     """
     Tests that upgrade scheduling works. For that it starts mock

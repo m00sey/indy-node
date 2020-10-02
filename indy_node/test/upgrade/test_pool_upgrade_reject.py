@@ -1,5 +1,6 @@
 from copy import deepcopy
 
+import pytest
 from plenum.common.constants import NAME, VERSION, STEWARD_STRING
 from plenum.common.exceptions import RequestNackedException, RequestRejectedException
 from indy_common.constants import CANCEL, \
@@ -10,12 +11,14 @@ from plenum.test.helper import sdk_get_bad_response
 whitelist = ['Failed to upgrade node']
 
 
+@pytest.mark.upgrade
 def testNodeRejectsPoolUpgrade(looper, nodeSet, tdir, sdk_pool_handle,
                                sdk_wallet_trustee, invalidUpgrade):
     req = sdk_send_upgrade(looper, sdk_pool_handle, sdk_wallet_trustee, invalidUpgrade)
     sdk_get_bad_response(looper, [req], RequestNackedException, 'since time span between upgrades')
 
 
+@pytest.mark.upgrade
 def testOnlyTrusteeCanSendPoolUpgrade(looper, sdk_pool_handle, sdk_wallet_steward, validUpgrade):
     # A steward sending POOL_UPGRADE but txn fails
     validUpgrade = deepcopy(validUpgrade)
@@ -25,6 +28,7 @@ def testOnlyTrusteeCanSendPoolUpgrade(looper, sdk_pool_handle, sdk_wallet_stewar
     sdk_get_bad_response(looper, [req], RequestRejectedException, 'Not enough TRUSTEE signatures')
 
 
+@pytest.mark.upgrade
 def testNonTrustyCannotCancelUpgrade(looper, validUpgradeSent, sdk_pool_handle,
                                      sdk_wallet_steward, validUpgrade):
     validUpgradeCopy = deepcopy(validUpgrade)
@@ -33,6 +37,7 @@ def testNonTrustyCannotCancelUpgrade(looper, validUpgradeSent, sdk_pool_handle,
     sdk_get_bad_response(looper, [req], RequestRejectedException, 'Not enough TRUSTEE signatures')
 
 
+@pytest.mark.upgrade
 def test_accept_then_reject_upgrade(
         looper, sdk_pool_handle, sdk_wallet_trustee, validUpgradeSent, validUpgrade):
     upgrade_name = validUpgrade[NAME]
@@ -44,6 +49,7 @@ def test_accept_then_reject_upgrade(
     sdk_get_bad_response(looper, [req], RequestRejectedException, error_msg)
 
 
+@pytest.mark.upgrade
 def testOnlyTrusteeCanSendPoolUpgradeForceTrue(
         looper, sdk_pool_handle, sdk_wallet_steward, validUpgradeExpForceTrue):
     req = sdk_send_upgrade(looper, sdk_pool_handle, sdk_wallet_steward, validUpgradeExpForceTrue)
