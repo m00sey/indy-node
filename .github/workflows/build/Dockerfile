@@ -9,7 +9,6 @@ RUN apt-get update -y && apt-get install -y \
     python3-nacl \
     libindy-crypto=0.4.5 \
     libindy=1.13.0~1420 \
-# rocksdb python wrapper
     libbz2-dev \
     zlib1g-dev \
     liblz4-dev \
@@ -20,5 +19,5 @@ RUN indy_ci_add_user $uid $user $venv
 
 RUN indy_image_clean
 
-#USER $user
-#WORKDIR /home/$user
+USER $user
+WORKDIR /home/$user
