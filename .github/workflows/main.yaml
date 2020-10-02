@@ -18,6 +18,9 @@ jobs:
           key: ${{ runner.os }}-pip-${{ hashFiles('setup.py') }}
           restore-keys: |
             ${{ runner.os }}-pip-
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          pip install .[tests]
 
       - name: Install dependencies
         run: pip install .[tests]
@@ -55,9 +58,9 @@ jobs:
           key: ${{ runner.os }}-pip-${{ hashFiles('setup.py') }}
           restore-keys: |
             ${{ runner.os }}-pip-
-
-      - name: Install dependencies
-        run: pip install .[tests]
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          pip install .[tests]
 
       - name: Run Indy Node ${{ matrix.module }} tests
         run: python -m pytest -l -m ${{ matrix.module }} -vv --junitxml=test-result-node-${{ matrix.module }}.xml indy_node
