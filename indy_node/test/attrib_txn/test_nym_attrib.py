@@ -61,10 +61,12 @@ def whitelistextras(*msg):
     [whitelistArray.remove(m) for m, _in in ins.items() if not _in]
 
 
+@pytest.mark.attrib_txn
 def testEndorserAddsAttributeForUser(sdk_added_raw_attribute):
     pass
 
 
+@pytest.mark.attrib_txn
 def testEndorserGetAttrsForUser(looper,
                                    sdk_user_wallet_a,
                                    sdk_wallet_endorser,
@@ -76,6 +78,7 @@ def testEndorserGetAttrsForUser(looper,
                                 sdk_wallet_endorser, dest, attributeName)
 
 
+@pytest.mark.attrib_txn
 def test_edit_attrib(sdk_pool_handle, sdk_user_wallet_a,
                      sdk_wallet_endorser, attributeData, looper, attributeName):
     _, did_cl = sdk_user_wallet_a
@@ -97,6 +100,7 @@ def test_edit_attrib(sdk_pool_handle, sdk_user_wallet_a,
         json.loads(data.replace(' ', '')))
 
 
+@pytest.mark.attrib_txn
 def test_non_endorser_cannot_add_attribute_for_user(
         looper,
         nodeSet,
@@ -112,6 +116,7 @@ def test_non_endorser_cannot_add_attribute_for_user(
     e.match('can not touch raw field since only the owner can modify it')
 
 
+@pytest.mark.attrib_txn
 def testOnlyUsersEndorserCanAddAttribute(
         nodeSet,
         looper,
@@ -128,6 +133,7 @@ def testOnlyUsersEndorserCanAddAttribute(
     e.match('can not touch raw field since only the owner can modify it')
 
 
+@pytest.mark.attrib_txn
 def testStewardCannotAddUsersAttribute(
         nodeSet,
         looper,
@@ -146,6 +152,7 @@ def testStewardCannotAddUsersAttribute(
 
 # TODO: Ask Jason, if getting the latest attribute makes sense since in case
 # of encrypted and hashed attributes, there is no name.
+@pytest.mark.attrib_txn
 def testLatestAttrIsReceived(
         looper,
         nodeSet,
@@ -174,6 +181,7 @@ def reply_equality_of_get_attribute(reply, value):
     assert json.loads(result['data'])[result['raw']] == value
 
 
+@pytest.mark.attrib_txn
 def test_user_add_attrs_for_herself_and_get_it(
         looper,
         nodeSet,
@@ -303,6 +311,7 @@ def set_attrib_auth_to_none(looper, sdk_wallet_trustee, sdk_pool_handle):
                                                                    need_to_be_owner=True).as_dict)
 
 
+@pytest.mark.attrib_txn
 def test_auth_rule_for_raw_attrib_works(looper,
                                         sdk_wallet_trustee,
                                         sdk_pool_handle,
@@ -359,6 +368,7 @@ def test_auth_rule_for_raw_attrib_works(looper,
     e.match('Not enough STEWARD signatures')
 
 
+@pytest.mark.attrib_txn
 def test_auth_rule_for_hash_attrib_works(looper,
                                          sdk_wallet_trustee,
                                          sdk_pool_handle,
@@ -413,6 +423,7 @@ def test_auth_rule_for_hash_attrib_works(looper,
     e.match('Not enough STEWARD signatures')
 
 
+@pytest.mark.attrib_txn
 def test_auth_rule_for_enc_attrib_works(looper,
                                         sdk_wallet_trustee,
                                         sdk_pool_handle,

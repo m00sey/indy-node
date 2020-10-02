@@ -10,12 +10,6 @@ from plenum.config import NAME_FIELD_LIMIT
 from plenum.test.helper import sdk_sign_and_submit_req, sdk_get_reply
 
 
-def pytest_collection_modifyitems(items):
-    for item in items:
-        if "claim_def" in item.nodeid:
-            item.add_marker(pytest.mark.claim_def)
-
-
 @pytest.fixture(scope="module")
 def schema_json(looper, sdk_pool_handle, sdk_wallet_trustee):
     wallet_handle, identifier = sdk_wallet_trustee

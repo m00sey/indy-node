@@ -8,10 +8,6 @@ from plenum.common.util import randomString
 from plenum.test.helper import sdk_get_and_check_replies
 from plenum.test.pool_transactions.helper import sdk_sign_and_send_prepared_request
 
-def pytest_collection_modifyitems(items):
-    for item in items:
-        if "test_did_with" in item.nodeid:
-            item.add_marker(pytest.mark.did)
 
 def add_new_nym(looper, sdk_pool_handle, creators_wallet, dest, verkey=None):
     wh, submitter_did = creators_wallet
