@@ -20,7 +20,7 @@ from plenum.common.txn_util import reqToTxn, append_txn_metadata
 from plenum.common.util import SortedDict, randomString
 
 
-@pytest.mark.request_handlers_rich_schema
+@pytest.mark.request_handlers
 def test_update_state(handler_and_request):
     handler, request = handler_and_request
     seq_no = 1
@@ -53,13 +53,13 @@ def test_update_state(handler_and_request):
     assert handler.state.get(secondary_key, isCommitted=False) == op[RS_ID].encode()
 
 
-@pytest.mark.request_handlers_rich_schema
+@pytest.mark.request_handlers
 def test_static_validation_pass(handler_and_request):
     handler, request = handler_and_request
     handler.static_validation(request)
 
 
-@pytest.mark.request_handlers_rich_schema
+@pytest.mark.request_handlers
 def test_static_validation_content_is_json(handler_and_request):
     handler, request = handler_and_request
 
@@ -68,7 +68,7 @@ def test_static_validation_content_is_json(handler_and_request):
         handler.static_validation(request)
 
 
-@pytest.mark.request_handlers_rich_schema
+@pytest.mark.request_handlers
 @pytest.mark.parametrize('status', ['missing', 'empty', 'none'])
 def test_static_validation_content_is_json_ld_with_atid(handler_and_request, status):
     handler, request = handler_and_request
@@ -90,7 +90,7 @@ def test_static_validation_content_is_json_ld_with_atid(handler_and_request, sta
         handler.static_validation(request)
 
 
-@pytest.mark.request_handlers_rich_schema
+@pytest.mark.request_handlers
 @pytest.mark.parametrize('status', ['missing', 'empty', 'none'])
 def test_static_validation_content_is_json_ld_with_attype(handler_and_request, status):
     handler, request = handler_and_request
@@ -113,7 +113,7 @@ def test_static_validation_content_is_json_ld_with_attype(handler_and_request, s
         handler.static_validation(request)
 
 
-@pytest.mark.request_handlers_rich_schema
+@pytest.mark.request_handlers
 def test_static_validation_atid_equals_to_id(handler_and_request):
     handler, request = handler_and_request
 
@@ -129,7 +129,7 @@ def test_static_validation_atid_equals_to_id(handler_and_request):
         handler.static_validation(request)
 
 
-@pytest.mark.request_handlers_rich_schema
+@pytest.mark.request_handlers
 def test_dynamic_validation_failed_not_authorised(handler_and_request):
     handler, request = handler_and_request
     add_to_idr(handler.database_manager.idr_cache, request.identifier, None)
@@ -137,7 +137,7 @@ def test_dynamic_validation_failed_not_authorised(handler_and_request):
         handler.dynamic_validation(request, 0)
 
 
-@pytest.mark.request_handlers_rich_schema
+@pytest.mark.request_handlers
 def test_dynamic_validation_for_existing(handler_and_request):
     handler, request = handler_and_request
     make_rich_schema_object_exist(handler, request)
@@ -148,7 +148,7 @@ def test_dynamic_validation_for_existing(handler_and_request):
         handler.dynamic_validation(request, 0)
 
 
-@pytest.mark.request_handlers_rich_schema
+@pytest.mark.request_handlers
 def test_dynamic_validation_for_existing_metadata(handler_and_request):
     handler, request = handler_and_request
     make_rich_schema_object_exist(handler, request)

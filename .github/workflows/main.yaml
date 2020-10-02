@@ -29,7 +29,8 @@ jobs:
     strategy:
       matrix:
         module: [ anon_creds, api, attrib_txn, auth_rule, claim_def, did, endorser, node_control_utils, node_txn,
-                  suspension ]
+                  package, persistance, pool_config, pool_restart, replay, request_handlers, request_propagates,
+                  rich_schema, suspension ]
       fail-fast: false
     container: m00sey/indy-node-build:latest
     steps:

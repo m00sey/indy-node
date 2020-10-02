@@ -60,12 +60,12 @@ def cred_def_req(rich_schema_handler, mapping_handler, rich_schema_req, mapping_
     return req
 
 
-@pytest.mark.request_handlers_rich_schema
+@pytest.mark.request_handlers
 def test_static_validation_pass(cred_def_handler, cred_def_req):
     cred_def_handler.static_validation(cred_def_req)
 
 
-@pytest.mark.request_handlers_rich_schema
+@pytest.mark.request_handlers
 @pytest.mark.parametrize('missing_field', ['signatureType', 'mapping', 'schema', 'publicKey'])
 @pytest.mark.parametrize('status', ['missing', 'empty', 'none'])
 def test_static_validation_no_field(cred_def_handler, cred_def_req, missing_field, status):
@@ -83,7 +83,7 @@ def test_static_validation_no_field(cred_def_handler, cred_def_req, missing_fiel
         cred_def_handler.static_validation(cred_def_req)
 
 
-@pytest.mark.request_handlers_rich_schema
+@pytest.mark.request_handlers
 @pytest.mark.parametrize('status', ['missing', 'empty', 'none'])
 def test_static_validation_no_all_fields(cred_def_handler, cred_def_req, status):
     content = copy.deepcopy(json.loads(cred_def_req.operation[RS_CONTENT]))
@@ -109,12 +109,12 @@ def test_static_validation_no_all_fields(cred_def_handler, cred_def_req, status)
         cred_def_handler.static_validation(cred_def_req)
 
 
-@pytest.mark.request_handlers_rich_schema
+@pytest.mark.request_handlers
 def test_dynamic_validation_passes(cred_def_handler, cred_def_req):
     cred_def_handler.dynamic_validation(cred_def_req, 0)
 
 
-@pytest.mark.request_handlers_rich_schema
+@pytest.mark.request_handlers
 @pytest.mark.parametrize('field', [RS_CRED_DEF_SCHEMA, RS_CRED_DEF_MAPPING])
 def test_dynamic_validation_not_existent_ref(cred_def_handler, cred_def_req,
                                              field):
@@ -129,7 +129,7 @@ def test_dynamic_validation_not_existent_ref(cred_def_handler, cred_def_req,
         cred_def_handler.dynamic_validation(cred_def_req, 0)
 
 
-@pytest.mark.request_handlers_rich_schema
+@pytest.mark.request_handlers
 def test_dynamic_validation_not_schema_in_schema_field(cred_def_handler, cred_def_req,
                                                        mapping_req):
     content = copy.deepcopy(json.loads(cred_def_req.operation[RS_CONTENT]))
@@ -141,7 +141,7 @@ def test_dynamic_validation_not_schema_in_schema_field(cred_def_handler, cred_de
         cred_def_handler.dynamic_validation(cred_def_req, 0)
 
 
-@pytest.mark.request_handlers_rich_schema
+@pytest.mark.request_handlers
 def test_dynamic_validation_not_mapping_in_mapping_field(cred_def_handler, cred_def_req,
                                                          rich_schema_req):
     content = copy.deepcopy(json.loads(cred_def_req.operation[RS_CONTENT]))

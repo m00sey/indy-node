@@ -36,7 +36,7 @@ def get_rich_schema_by_meta_handler(db_manager):
     return GetRichSchemaObjectByMetadataHandler(db_manager)
 
 
-@pytest.mark.request_handlers_rich_schema
+@pytest.mark.request_handlers
 def test_get_rich_schema_obj(db_manager, handler_and_request, metadata,
                              get_rich_schema_by_meta_handler, get_rich_schema_req):
     # prepare: store object in state with bls multi-sg
@@ -80,7 +80,7 @@ def test_get_rich_schema_obj(db_manager, handler_and_request, metadata,
                              path, result[DATA], seq_no, txn_time)
 
 
-@pytest.mark.request_handlers_rich_schema
+@pytest.mark.request_handlers
 def test_get_rich_schema_obj_not_existent(db_manager, handler_and_request, metadata,
                                           get_rich_schema_by_meta_handler, get_rich_schema_req):
     save_multi_sig(db_manager)
@@ -97,7 +97,7 @@ def test_get_rich_schema_obj_not_existent(db_manager, handler_and_request, metad
     check_valid_proof(result)
 
 
-@pytest.mark.request_handlers_rich_schema
+@pytest.mark.request_handlers
 def test_get_rich_schema_obj_committed_only(db_manager, handler_and_request, metadata,
                                             get_rich_schema_by_meta_handler, get_rich_schema_req):
     # prepare: store object in state with bls multi-sig, and then update the object (uncommitted)
