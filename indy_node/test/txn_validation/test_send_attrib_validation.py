@@ -14,6 +14,7 @@ from plenum.common.util import rawToFriendly, randomString
 from plenum.test.pool_transactions.helper import sdk_add_new_nym
 
 
+@pytest.mark.txn_validation
 def testSendAttribSucceedsForExistingDest(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -21,6 +22,7 @@ def testSendAttribSucceedsForExistingDest(
     sdk_add_attribute_and_check(looper, sdk_pool_handle, new_wallet, parameters)
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsForNotExistingDest(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     wh, _ = sdk_wallet_trustee
@@ -35,6 +37,7 @@ def testSendAttribFailsForNotExistingDest(
     e.match('dest should be added before adding attribute for it')
 
 
+@pytest.mark.txn_validation
 def testSendAttribSucceedsForRawWithCompoundAttr(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -48,6 +51,7 @@ def testSendAttribSucceedsForRawWithCompoundAttr(
     sdk_add_attribute_and_check(looper, sdk_pool_handle, new_wallet, parameters)
 
 
+@pytest.mark.txn_validation
 def testSendAttribSucceedsForRawWithNullifiedAttr(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -57,6 +61,7 @@ def testSendAttribSucceedsForRawWithNullifiedAttr(
     sdk_add_attribute_and_check(looper, sdk_pool_handle, new_wallet, parameters)
 
 
+@pytest.mark.txn_validation
 def testSendAttribSucceedsForRawWithEndpointWithHaContainingIpAddrAndPort(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -68,6 +73,7 @@ def testSendAttribSucceedsForRawWithEndpointWithHaContainingIpAddrAndPort(
     sdk_add_attribute_and_check(looper, sdk_pool_handle, new_wallet, parameters)
 
 
+@pytest.mark.txn_validation
 def testSendAttribSucceedsForRawWithEndpointWithHaBeingNull(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -79,6 +85,7 @@ def testSendAttribSucceedsForRawWithEndpointWithHaBeingNull(
     sdk_add_attribute_and_check(looper, sdk_pool_handle, new_wallet, parameters)
 
 
+@pytest.mark.txn_validation
 def testSendAttribSucceedsForRawWithEndpointWithValidHaAndOtherProperties(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -92,6 +99,7 @@ def testSendAttribSucceedsForRawWithEndpointWithValidHaAndOtherProperties(
     sdk_add_attribute_and_check(looper, sdk_pool_handle, new_wallet, parameters)
 
 
+@pytest.mark.txn_validation
 def testSendAttribSucceedsForRawWithEndpointWithoutHaButWithOtherProperties(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -104,6 +112,7 @@ def testSendAttribSucceedsForRawWithEndpointWithoutHaButWithOtherProperties(
     sdk_add_attribute_and_check(looper, sdk_pool_handle, new_wallet, parameters)
 
 
+@pytest.mark.txn_validation
 def testSendAttribSucceedsForRawWithEndpointWithoutProperties(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -113,6 +122,7 @@ def testSendAttribSucceedsForRawWithEndpointWithoutProperties(
     sdk_add_attribute_and_check(looper, sdk_pool_handle, new_wallet, parameters)
 
 
+@pytest.mark.txn_validation
 def testSendAttribSucceedsForRawWithEndpointBeingNull(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -122,6 +132,7 @@ def testSendAttribSucceedsForRawWithEndpointBeingNull(
     sdk_add_attribute_and_check(looper, sdk_pool_handle, new_wallet, parameters)
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsForRawWithEndpointWithHaIfIpAddrHasWrongFormat(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -135,6 +146,7 @@ def testSendAttribFailsForRawWithEndpointWithHaIfIpAddrHasWrongFormat(
     e.match('invalid endpoint address')
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsForRawWithEndpointWithHaIfSomeIpComponentsAreNegative(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -148,6 +160,7 @@ def testSendAttribFailsForRawWithEndpointWithHaIfSomeIpComponentsAreNegative(
     e.match('invalid endpoint address')
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsForRawWithEndpointWithHaIfSomeIpCompHigherThanUpperBound(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -161,6 +174,7 @@ def testSendAttribFailsForRawWithEndpointWithHaIfSomeIpCompHigherThanUpperBound(
     e.match('invalid endpoint address')
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsForRawWithEndpointWithHaIfIpAddrIsEmpty(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -174,6 +188,7 @@ def testSendAttribFailsForRawWithEndpointWithHaIfIpAddrIsEmpty(
     e.match('invalid endpoint address')
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsForRawWithEndpointWithHaIfPortIsNegative(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -187,6 +202,7 @@ def testSendAttribFailsForRawWithEndpointWithHaIfPortIsNegative(
     e.match('invalid endpoint port')
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsForRawWithEndpointWithHaIfPortIsHigherThanUpperBound(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -200,6 +216,7 @@ def testSendAttribFailsForRawWithEndpointWithHaIfPortIsHigherThanUpperBound(
     e.match('invalid endpoint port')
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsForRawWithEndpointWithHaIfPortIsFloat(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -213,6 +230,7 @@ def testSendAttribFailsForRawWithEndpointWithHaIfPortIsFloat(
     e.match('invalid endpoint port')
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsForRawWithEndpointWithHaIfPortHasWrongFormat(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -226,6 +244,7 @@ def testSendAttribFailsForRawWithEndpointWithHaIfPortHasWrongFormat(
     e.match('invalid endpoint port')
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsForRawWithEndpointWithHaIfPortIsEmpty(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -239,6 +258,7 @@ def testSendAttribFailsForRawWithEndpointWithHaIfPortIsEmpty(
     e.match('invalid endpoint port')
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsForRawWithEndpointWithHaContainingIpAddrOnly(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -252,6 +272,7 @@ def testSendAttribFailsForRawWithEndpointWithHaContainingIpAddrOnly(
     e.match('invalid endpoint format')
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsForRawWithEndpointWithHaContainingPortOnly(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -265,6 +286,7 @@ def testSendAttribFailsForRawWithEndpointWithHaContainingPortOnly(
     e.match('invalid endpoint format')
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsForRawWithEndpointWithHaContainingDomainNameAndPort(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -278,6 +300,7 @@ def testSendAttribFailsForRawWithEndpointWithHaContainingDomainNameAndPort(
     e.match('invalid endpoint address')
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsForRawWithEndpointWithHaContainingDomainNameOnly(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -291,6 +314,7 @@ def testSendAttribFailsForRawWithEndpointWithHaContainingDomainNameOnly(
     e.match('invalid endpoint format')
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsForRawWithEndpointWithHaBeingHumanReadableText(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -304,6 +328,7 @@ def testSendAttribFailsForRawWithEndpointWithHaBeingHumanReadableText(
     e.match('invalid endpoint format')
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsForRawWithEndpointWithHaBeingDecimalNumber(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -317,6 +342,7 @@ def testSendAttribFailsForRawWithEndpointWithHaBeingDecimalNumber(
     e.match('is not iterable')
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsForRawWithEndpointWithEmptyHa(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -330,6 +356,7 @@ def testSendAttribFailsForRawWithEndpointWithEmptyHa(
     e.match('invalid endpoint format')
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsForRawWithEndpointBeingEmptyString(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -341,6 +368,7 @@ def testSendAttribFailsForRawWithEndpointBeingEmptyString(
     e.match('should be a dict')
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsIfRawContainsMulipleAttrs(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -353,6 +381,7 @@ def testSendAttribFailsIfRawContainsMulipleAttrs(
     e.match(' should contain one attribute')
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsIfRawContainsNoAttrs(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -362,6 +391,7 @@ def testSendAttribFailsIfRawContainsNoAttrs(
     e.match(' should contain one attribute')
 
 
+@pytest.mark.txn_validation
 def testSendAttribSucceedsForHexSha256Hash(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     raw = json.dumps({
@@ -374,6 +404,7 @@ def testSendAttribSucceedsForHexSha256Hash(
                                 xhash=sha256(raw.encode()).hexdigest())
 
 
+@pytest.mark.txn_validation
 def testSendAttribSucceedsForHexHashWithLettersInBothCases(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -382,6 +413,7 @@ def testSendAttribSucceedsForHexHashWithLettersInBothCases(
                                 xhash='6d4a333838d0ef96756cccC680AF2531075C512502Fb68c5503c63d93de859b3')
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsForHashShorterThanSha256(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -392,6 +424,7 @@ def testSendAttribFailsForHashShorterThanSha256(
     e.match('not a valid hash')
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsForHashLongerThanSha256(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -402,6 +435,7 @@ def testSendAttribFailsForHashLongerThanSha256(
     e.match('not a valid hash')
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsForBase58Hash(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     raw = json.dumps({
@@ -417,6 +451,7 @@ def testSendAttribFailsForBase58Hash(
     e.match('not a valid hash')
 
 
+@pytest.mark.txn_validation
 def testSendAttribFailsForBase64Hash(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     raw = json.dumps({
@@ -432,6 +467,7 @@ def testSendAttribFailsForBase64Hash(
     e.match('not a valid hash')
 
 
+@pytest.mark.txn_validation
 def testSendAttribHasInvalidSyntaxIfHashIsEmpty(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -442,6 +478,7 @@ def testSendAttribHasInvalidSyntaxIfHashIsEmpty(
     e.match('not a valid hash')
 
 
+@pytest.mark.txn_validation
 def testSendAttribSucceedsForNonEmptyEnc(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     raw = json.dumps({
@@ -455,6 +492,7 @@ def testSendAttribSucceedsForNonEmptyEnc(
                                 enc=secretBox.encrypt(raw.encode()).hex())
 
 
+@pytest.mark.txn_validation
 def testSendAttribHasInvalidSyntaxIfEncIsEmpty(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     new_wallet = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
@@ -465,6 +503,7 @@ def testSendAttribHasInvalidSyntaxIfEncIsEmpty(
     e.match('empty string')
 
 
+@pytest.mark.txn_validation
 def testSendAttribHasInvalidSyntaxIfRawAndHashPassedAtSameTime(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     raw = json.dumps({
@@ -479,6 +518,7 @@ def testSendAttribHasInvalidSyntaxIfRawAndHashPassedAtSameTime(
     e.match('only one field from raw, enc, hash is expected')
 
 
+@pytest.mark.txn_validation
 def testSendAttribHasInvalidSyntaxIfRawAndEncPassedAtSameTime(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     raw = json.dumps({
@@ -494,6 +534,7 @@ def testSendAttribHasInvalidSyntaxIfRawAndEncPassedAtSameTime(
     e.match('not a valid hash')
 
 
+@pytest.mark.txn_validation
 def testSendAttribHasInvalidSyntaxIfHashAndEncPassedAtSameTime(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     raw = json.dumps({
@@ -511,6 +552,7 @@ def testSendAttribHasInvalidSyntaxIfHashAndEncPassedAtSameTime(
     e.match('only one field from raw, enc, hash is expected')
 
 
+@pytest.mark.txn_validation
 def testSendAttribHasInvalidSyntaxIfRawHashAndEncPassedAtSameTime(
         looper, sdk_pool_handle, sdk_wallet_trustee):
     raw = json.dumps({
