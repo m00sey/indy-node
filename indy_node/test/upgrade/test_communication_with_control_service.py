@@ -1,6 +1,7 @@
 import asyncio
 from datetime import datetime
 
+import pytest
 from stp_core.loop.eventually import eventuallySoon
 
 from indy_node.server.upgrade_log import UpgradeLogData
