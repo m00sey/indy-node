@@ -29,6 +29,7 @@ def ensurePoolIsOperable(looper, sdk_pool_handle, sdk_wallet_creator):
     sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_creator)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfDestIsShortReadableName(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['dest'] = 'TheNewNode'
@@ -41,6 +42,7 @@ def testSendNodeFailsIfDestIsShortReadableName(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfDestIsHexKey(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['dest'] = cryptonymToHex(
@@ -54,6 +56,7 @@ def testSendNodeFailsIfDestIsHexKey(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeHasInvalidSyntaxIfDestIsEmpty(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['dest'] = ''
@@ -66,6 +69,7 @@ def testSendNodeHasInvalidSyntaxIfDestIsEmpty(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeHasInvalidSyntaxIfDestIsMissed(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     del node_request['operation']['dest']
@@ -78,6 +82,7 @@ def testSendNodeHasInvalidSyntaxIfDestIsMissed(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfNodeIpContainsLeadingSpace(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][NODE_IP] = ' 122.62.52.13'
@@ -90,6 +95,7 @@ def testSendNodeFailsIfNodeIpContainsLeadingSpace(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfNodeIpContainsTrailingSpace(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][NODE_IP] = '122.62.52.13 '
@@ -103,6 +109,7 @@ def testSendNodeFailsIfNodeIpContainsTrailingSpace(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfNodeIpHasWrongFormat(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][NODE_IP] = '122.62.52'
@@ -115,6 +122,7 @@ def testSendNodeFailsIfNodeIpHasWrongFormat(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfSomeNodeIpComponentsAreNegative(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][NODE_IP] = '122.-1.52.13'
@@ -127,6 +135,7 @@ def testSendNodeFailsIfSomeNodeIpComponentsAreNegative(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfSomeNodeIpComponentsAreHigherThanUpperBound(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][NODE_IP] = '122.62.256.13'
@@ -139,6 +148,7 @@ def testSendNodeFailsIfSomeNodeIpComponentsAreHigherThanUpperBound(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfNodeIpIsEmpty(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][NODE_IP] = ''
@@ -151,6 +161,7 @@ def testSendNodeFailsIfNodeIpIsEmpty(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfNodeIpIsMissed(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     del node_request['operation']['data'][NODE_IP]
@@ -163,6 +174,7 @@ def testSendNodeFailsIfNodeIpIsMissed(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfNodePortIsNegative(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][NODE_PORT] = -1
@@ -175,6 +187,7 @@ def testSendNodeFailsIfNodePortIsNegative(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfNodePortIsHigherThanUpperBound(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][NODE_PORT] = 65536
@@ -187,6 +200,7 @@ def testSendNodeFailsIfNodePortIsHigherThanUpperBound(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfNodePortIsFloat(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][NODE_PORT] = 5555.5
@@ -199,6 +213,7 @@ def testSendNodeFailsIfNodePortIsFloat(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfNodePortHasWrongFormat(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][NODE_PORT] = 'ninety'
@@ -211,6 +226,7 @@ def testSendNodeFailsIfNodePortHasWrongFormat(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfNodePortIsEmpty(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][NODE_PORT] = ''
@@ -223,6 +239,7 @@ def testSendNodeFailsIfNodePortIsEmpty(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfNodePortIsMissed(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     del node_request['operation']['data'][NODE_PORT]
@@ -235,6 +252,7 @@ def testSendNodeFailsIfNodePortIsMissed(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfClientIpContainsLeadingSpace(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][CLIENT_IP] = ' 122.62.52.13'
@@ -247,6 +265,7 @@ def testSendNodeFailsIfClientIpContainsLeadingSpace(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfClientIpContainsTrailingSpace(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][CLIENT_IP] = '122.62.52.13 '
@@ -259,6 +278,7 @@ def testSendNodeFailsIfClientIpContainsTrailingSpace(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfClientIpHasWrongFormat(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][CLIENT_IP] = '122.62.52'
@@ -271,6 +291,7 @@ def testSendNodeFailsIfClientIpHasWrongFormat(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfSomeClientIpComponentsAreNegative(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][CLIENT_IP] = '122.-1.52.13'
@@ -283,6 +304,7 @@ def testSendNodeFailsIfSomeClientIpComponentsAreNegative(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfSomeClientIpComponentsAreHigherThanUpperBound(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][CLIENT_IP] = '122.62.256.13'
@@ -295,6 +317,7 @@ def testSendNodeFailsIfSomeClientIpComponentsAreHigherThanUpperBound(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfClientIpIsEmpty(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][CLIENT_IP] = ''
@@ -307,6 +330,7 @@ def testSendNodeFailsIfClientIpIsEmpty(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfClientIpIsMissed(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     del node_request['operation']['data'][CLIENT_IP]
@@ -319,6 +343,7 @@ def testSendNodeFailsIfClientIpIsMissed(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfClientPortIsNegative(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][CLIENT_PORT] = -1
@@ -331,6 +356,7 @@ def testSendNodeFailsIfClientPortIsNegative(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfClientPortIsHigherThanUpperBound(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][CLIENT_PORT] = 65536
@@ -343,6 +369,7 @@ def testSendNodeFailsIfClientPortIsHigherThanUpperBound(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfClientPortIsFloat(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][CLIENT_PORT] = 5555.5
@@ -355,6 +382,7 @@ def testSendNodeFailsIfClientPortIsFloat(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfClientPortHasWrongFormat(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][CLIENT_PORT] = 'ninety'
@@ -367,6 +395,7 @@ def testSendNodeFailsIfClientPortHasWrongFormat(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfClientPortIsEmpty(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][CLIENT_PORT] = ''
@@ -379,6 +408,7 @@ def testSendNodeFailsIfClientPortIsEmpty(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfClientPortIsMissed(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     del node_request['operation']['data'][CLIENT_PORT]
@@ -391,6 +421,7 @@ def testSendNodeFailsIfClientPortIsMissed(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfAliasIsEmpty(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][ALIAS] = ''
@@ -403,6 +434,7 @@ def testSendNodeFailsIfAliasIsEmpty(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfAliasIsMissed(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     del node_request['operation']['data'][ALIAS]
@@ -415,6 +447,7 @@ def testSendNodeFailsIfAliasIsMissed(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfServicesContainsUnknownValue(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][SERVICES] = [VALIDATOR, 'DECIDER']
@@ -427,6 +460,7 @@ def testSendNodeFailsIfServicesContainsUnknownValue(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfServicesIsValidatorValue(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][SERVICES] = VALIDATOR  # just string, not array
@@ -439,6 +473,7 @@ def testSendNodeFailsIfServicesIsValidatorValue(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfServicesIsEmptyString(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][SERVICES] = ''
@@ -451,6 +486,7 @@ def testSendNodeFailsIfServicesIsEmptyString(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeSuccessIfDataContainsUnknownField(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'][SERVICES] = []
@@ -464,6 +500,7 @@ def testSendNodeSuccessIfDataContainsUnknownField(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfDataIsEmptyJson(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'] = {}
@@ -476,6 +513,7 @@ def testSendNodeFailsIfDataIsEmptyJson(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfDataIsBrokenJson(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'] = "{'node_ip': '10.0.0.105', 'node_port': 9701"
@@ -488,6 +526,7 @@ def testSendNodeFailsIfDataIsBrokenJson(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeFailsIfDataIsNotJson(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'] = 'not_json'
@@ -500,6 +539,7 @@ def testSendNodeFailsIfDataIsNotJson(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeHasInvalidSyntaxIfDataIsEmptyString(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     node_request['operation']['data'] = ''
@@ -512,6 +552,7 @@ def testSendNodeHasInvalidSyntaxIfDataIsEmptyString(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeHasInvalidSyntaxIfDataIsMissed(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     del node_request['operation']['data']
@@ -535,6 +576,7 @@ def testSendNodeHasInvalidSyntaxIfUnknownParameterIsPassed(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeHasInvalidSyntaxIfAllParametersAreMissed(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     for f in node_request['operation'].keys():
@@ -548,6 +590,7 @@ def testSendNodeHasInvalidSyntaxIfAllParametersAreMissed(
     ensurePoolIsOperable(looper, sdk_pool_handle, steward_wallet)
 
 
+@pytest.mark.node_txn
 def testSendNodeSucceedsIfServicesIsMissed(
         looper, sdk_pool_handle, nodeSet, sdk_node_theta_added, node_request):
     del node_request['operation']['data'][SERVICES]
