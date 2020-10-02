@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        module: [ anon_creds, suspension, endorser, did, claim_def, api, attrib_txn ]
+        module: [ anon_creds, api, attrib_txn, auth_rule, claim_def, did, endorser, suspension ]
       fail-fast: false
     container: m00sey/indy-node-build:latest
     steps:
