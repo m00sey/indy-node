@@ -37,10 +37,10 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        module: [ anon_creds, api, attrib_txn, auth_rule, claim_def, did, endorser, node_control_utils, node_txn,
-                  package, persistance, pool_config, pool_restart, replay, request_handlers, request_propagates,
-                  rich_schema, schema, state_proof, suspension, tools, txn_author_agreement, txn_validation, upgrade,
-                  validator_info, view_change, write_permission ]
+        module: [ upgrade, auth_rule, anon_creds, api, attrib_txn, claim_def, did, endorser, node_control_utils,
+                  node_txn, package, persistance, pool_config, pool_restart, replay, request_handlers,
+                  request_propagates, rich_schema, schema, state_proof, suspension, tools, txn_author_agreement,
+                  txn_validation, validator_info, view_change, write_permission ]
       fail-fast: false
     #TODO: move this to hyperledger?
     container: m00sey/indy-node-build:latest
