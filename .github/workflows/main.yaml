@@ -11,6 +11,13 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('setup.py') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
       - name: Install dependencies
         run: pip install .[tests]
 
@@ -40,11 +47,12 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - uses: actions/cache@v1
-        id: cache
+      - uses: actions/cache@v2
         with:
           path: ~/.cache/pip
-          key: testdeps
+          key: ${{ runner.os }}-pip-${{ hashFiles('setup.py') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
       - name: Install dependencies
         run: pip install .[tests]
