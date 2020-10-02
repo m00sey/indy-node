@@ -1,4 +1,6 @@
 import multiprocessing
+
+import pytest
 from stp_core.loop.eventually import eventually
 from indy_common.version import src_version_cls
 from indy_node.utils.node_control_utils import NodeControlUtil, DebianVersion
