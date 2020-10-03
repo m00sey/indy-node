@@ -11,6 +11,9 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
+      - name: wat
+        run: echo $USER
+
       - name: Use Python Dependency Cache
         uses: actions/cache@v1.0.3
         with:
