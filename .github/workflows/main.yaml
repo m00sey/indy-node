@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - name: Install dependencies
-        run: >
-          apt-get update -y && apt-get install -y python3-nacl libindy-crypto=0.4.5 libindy=1.13.0~1420 libbz2-dev
+        run: |
+          apt-get update -y && apt-get install -y python3-nacl libindy-crypto=0.4.5 libindy=1.13.0~1420 libbz2-dev \
               zlib1g-dev liblz4-dev libsnappy-dev rocksdb=5.8.8
 
       - name: Check out code
