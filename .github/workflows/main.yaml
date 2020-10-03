@@ -5,8 +5,19 @@ jobs:
   build-common:
     name: Build Indy Common
     runs-on: ubuntu-18.04
+    container: hyperledger/indy-core-baseci:0.0.3-master
     steps:
-      - name: Install dependencies
+      - name: Install dependencies #cache-me
+        run: |
+          apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CE7709D068DB5E88 && \
+              echo "deb https://repo.sovrin.org/deb xenial master" >> /etc/apt/sources.list && \
+              apt-get update
+
+      - name: seems wrong
+        run : |
+            echo "deb https://repo.sovrin.org/sdk/deb xenial master" >> /etc/apt/sources.list
+
+      - name: step up 2
         run: |
           sudo apt-get update -y && sudo apt-get install -y python3-nacl libindy-crypto=0.4.5 libindy=1.13.0~1420 libbz2-dev \
               zlib1g-dev liblz4-dev libsnappy-dev rocksdb=5.8.8
