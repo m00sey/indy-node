@@ -1,5 +1,19 @@
-FROM hyperledger/indy-core-baseci:0.0.3-master
+FROM ubuntu:18.04
 LABEL maintainer="Hyperledger <hyperledger-indy@lists.hyperledger.org>"
+
+RUN apt-get update && apt-get install -y apt-transport-https \
+    ca-certificates \
+    gnupg2
+
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CE7709D068DB5E88 && \
+    echo "deb https://repo.sovrin.org/deb xenial master" >> /etc/apt/sources.list && \
+    apt-get update
+
+RUN echo "deb https://repo.sovrin.org/sdk/deb xenial master" >> /etc/apt/sources.list && \
+    apt-get update
+
+# set highest priority for indy sdk packages in core repo
+COPY indy-core-repo.preferences /etc/apt/preferences.d/indy-core-repo
 
 RUN apt-get update -y && apt-get install -y \
     python3-nacl \
@@ -11,4 +25,3 @@ RUN apt-get update -y && apt-get install -y \
     libsnappy-dev \
     rocksdb=5.8.8
 
-RUN indy_image_clean

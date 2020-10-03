@@ -6,13 +6,14 @@ jobs:
     name: Build Indy Common
     runs-on: ubuntu-18.04
     #TODO: move this to hyperledger?
-    container: m00sey/indy-node-build:latest
+    container: m00sey/indy-node-build:cache
     steps:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: wat
-        run: echo $USER
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.5'
 
       - name: Use Python Dependency Cache
         uses: actions/cache@v1.0.3
