@@ -1,9 +1,23 @@
 FROM ubuntu:18.04
 LABEL maintainer="Hyperledger <hyperledger-indy@lists.hyperledger.org>"
 
-RUN apt-get update && apt-get install -y apt-transport-https \
+# very common packages
+RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y \
+    git \
+    wget \
+    vim \
+    apt-transport-https \
     ca-certificates \
-    gnupg2
+    apt-utils \
+    python3.5 \
+    python3-pip \
+    python-setuptools
+
+# pypi based packages
+RUN pip3 install -U \
+    'pip<10.0.0' \
+    setuptools \
+    virtualenv
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CE7709D068DB5E88 && \
     echo "deb https://repo.sovrin.org/deb xenial master" >> /etc/apt/sources.list && \
