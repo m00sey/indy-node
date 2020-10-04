@@ -3,7 +3,7 @@ on: [ push, pull_request ]
 
 jobs:
   configure:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     outputs:
       uid_gid: ${{ steps.get-user.outputs.uid_gid }}
     steps:
