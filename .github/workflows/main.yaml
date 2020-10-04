@@ -2,11 +2,21 @@ name: indy-node-build
 on: [ push, pull_request ]
 
 jobs:
+  configure:
+    runs-on: ubuntu-latest
+    outputs:
+      uid_gid: ${{ steps.get-user.outputs.uid_gid }}
+    steps:
+      - id: get-user
+        run: echo "::set-output name=uid_gid::$(id -u):$(id -g)"
+
   build-common:
     name: Build Indy Common
     runs-on: ubuntu-18.04
     #TODO: move this to hyperledger?
-    container: m00sey/indy-node-build:cache
+    container:
+      image: m00sey/indy-node-build:cache
+      options: --user ${{ needs.configure.outputs.uid_gid }}
     steps:
       - name: Check out code
         uses: actions/checkout@v2
