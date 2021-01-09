@@ -18,8 +18,8 @@ jobs:
       - name: Check test decorators
         id: ctd
         run: |
-          echo "::set-output name=matrix-common::$(python scripts/pytest_mark_check.py indy_common)"
-          echo "::set-output name=matrix-node::$(python scripts/pytest_mark_check.py indy_node)"
+          echo "::set-output name=matrix-common::$(python3 scripts/pytest_mark_check.py indy_common)"
+          echo "::set-output name=matrix-node::$(python3 scripts/pytest_mark_check.py indy_node)"
 
   indy_common:
     name: Build Indy Common
@@ -39,7 +39,7 @@ jobs:
         continue-on-error: true
 
       - name: Run Indy Common tests
-        run: python -m pytest -l -m ${{ matrix.module }} -vv --junitxml=test-result-common-${{ matrix.module }}.xml indy_common
+        run: python3 -m pytest -l -m ${{ matrix.module }} -vv --junitxml=test-result-common-${{ matrix.module }}.xml indy_common
 
       - name: Publish Test Report
         uses: scacap/action-surefire-report@v1
@@ -66,7 +66,7 @@ jobs:
         continue-on-error: true
 
       - name: Run Indy Node ${{ matrix.module }} tests
-        run: python -m pytest -l -m ${{ matrix.module }} -vv --junitxml=test-result-node-${{ matrix.module }}.xml indy_node
+        run: python3 -m pytest -l -m ${{ matrix.module }} -vv --junitxml=test-result-node-${{ matrix.module }}.xml indy_node
 
       - name: Publish Test Report
         uses: scacap/action-surefire-report@v1

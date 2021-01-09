@@ -4,16 +4,13 @@ LABEL maintainer="griffin.kev@gmail.com"
 RUN apt-get update && apt-get dist-upgrade -y
 
 # very common packages
-RUN apt-get update && apt-get install -y \
+RUN apt-get install -y \
     git \
     wget \
     vim \
     apt-transport-https \
     ca-certificates \
-    apt-utils
-
-# python
-RUN apt-get update && apt-get install -y \
+    apt-utils \
     python3.5 \
     python3-pip \
     python-setuptools
@@ -27,28 +24,12 @@ RUN pip3 install -U \
 COPY scripts/clean.sh /usr/local/bin/indy_image_clean
 RUN chmod 755 /usr/local/bin/indy_image_clean
 
-RUN indy_image_clean
-
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CE7709D068DB5E88 && \
     echo "deb https://repo.sovrin.org/deb xenial master" >> /etc/apt/sources.list && \
-    apt-get update
-
-COPY scripts/user.sh /usr/local/bin/indy_ci_add_user
-RUN bash -c "chmod 755 /usr/local/bin/indy_ci_add_user"
-
-RUN indy_image_clean
-
-RUN echo "deb https://repo.sovrin.org/sdk/deb xenial master" >> /etc/apt/sources.list && \
-    apt-get update
+    echo "deb https://repo.sovrin.org/sdk/deb xenial master" >> /etc/apt/sources.list
 
 # set highest priority for indy sdk packages in core repo
 COPY indy-core-repo.preferences /etc/apt/preferences.d/indy-core-repo
-
-RUN indy_image_clean
-
-ARG uid=1000
-ARG user=indy
-ARG venv=venv
 
 RUN apt-get update -y && apt-get install -y \
     python3-nacl \
