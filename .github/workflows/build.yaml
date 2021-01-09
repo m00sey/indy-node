@@ -7,7 +7,7 @@ jobs:
     needs: lint
     runs-on: ubuntu-18.04
     #TODO: move this to hyperledger?
-    container: m00sey/indy-node-build:latest
+    container: m00sey/indy-node-build:new-docker
     outputs:
       matrix-common: ${{ steps.ctd.outputs.matrix-common }}
       matrix-node: ${{ steps.ctd.outputs.matrix-node }}
@@ -26,7 +26,7 @@ jobs:
     needs: decorator-checks
     runs-on: ubuntu-18.04
     #TODO: move this to hyperledger?
-    container: m00sey/indy-node-build:latest
+    container: m00sey/indy-node-build:new-docker
     strategy:
       matrix: ${{fromJson(needs.decorator-checks.outputs.matrix-common)}}
       fail-fast: false
@@ -53,7 +53,7 @@ jobs:
     needs: decorator-checks
     runs-on: ubuntu-18.04
     #TODO: move this to hyperledger?
-    container: m00sey/indy-node-build:latest
+    container: m00sey/indy-node-build:new-docker
     strategy:
       matrix: ${{fromJson(needs.decorator-checks.outputs.matrix-node)}}
       fail-fast: false
