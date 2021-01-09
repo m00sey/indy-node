@@ -35,11 +35,11 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: pip install .[tests]
+        run: pip3 install .[tests]
         continue-on-error: true
 
       - name: Run Indy Common tests
-        run: python -m pytest -l -m ${{ matrix.module }} -vv --junitxml=test-result-common-${{ matrix.module }}.xml indy_common
+        run: python3 -m pytest -l -m ${{ matrix.module }} -vv --junitxml=test-result-common-${{ matrix.module }}.xml indy_common
 
       - name: Publish Test Report
         uses: scacap/action-surefire-report@v1
@@ -62,11 +62,11 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: pip install .[tests]
+        run: pip3 install .[tests]
         continue-on-error: true
 
       - name: Run Indy Node ${{ matrix.module }} tests
-        run: python -m pytest -l -m ${{ matrix.module }} -vv --junitxml=test-result-node-${{ matrix.module }}.xml indy_node
+        run: python3 -m pytest -l -m ${{ matrix.module }} -vv --junitxml=test-result-node-${{ matrix.module }}.xml indy_node
 
       - name: Publish Test Report
         uses: scacap/action-surefire-report@v1
