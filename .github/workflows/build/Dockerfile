@@ -19,7 +19,8 @@ RUN apt-get install -y \
 RUN pip3 install -U \ 
     'pip<10.0.0' \
     setuptools \
-    virtualenv
+    virtualenv \
+    pytest
 
 COPY scripts/clean.sh /usr/local/bin/indy_image_clean
 RUN chmod 755 /usr/local/bin/indy_image_clean
