@@ -26,7 +26,10 @@ jobs:
     needs: decorator-checks
     runs-on: ubuntu-18.04
     steps:
-      - id: vdc
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Validate decorators
+        id: vdc
         uses: ./.github/actions/validate-decorators
         with:
           common: ${{fromJson(needs.decorator-checks.outputs.matrix-common)}}
