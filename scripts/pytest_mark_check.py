@@ -60,5 +60,4 @@ if __name__ == "__main__":
                     if res is not None:
                         errs.append(res)
 
-
     print(json.dumps({'failed': len(errs) > 0, 'errors': flatten_list(errs), 'module': list(matrix)}))
