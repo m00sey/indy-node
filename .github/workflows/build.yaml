@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - id: vdc
-        uses: .github/actions/validate-decorators
+        uses: ./.github/actions/validate-decorators
         with:
           common: ${{fromJson(needs.decorator-checks.outputs.matrix-common)}}
           node: ${{fromJson(needs.decorator-checks.outputs.matrix-node)}}
