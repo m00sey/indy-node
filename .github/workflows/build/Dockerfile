@@ -11,6 +11,7 @@ RUN apt-get update -y && apt-get install -y \
     liblz4-dev \
     libsnappy-dev \
     rocksdb=5.8.8 \
-    ursa=0.3.2-2
+    ursa=0.3.2-2 \
+    jq
 
 RUN indy_image_clean
