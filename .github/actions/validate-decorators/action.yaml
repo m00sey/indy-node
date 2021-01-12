@@ -1,0 +1,19 @@
+name: 'Validate decorators'
+description: 
+inputs: 
+  common:
+    required: true
+    description: 'Output from common decorator check'
+    default: ''
+  node:
+    required: true
+    description: 'Output from node decorator check'
+    default: ''
+outputs:
+  matrix-common:
+    description: 'common matrix to run'
+  matrix-node:
+    description: 'node matrix to run'
+runs:
+  using: "node12"
+  main: "index.js"
