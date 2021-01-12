@@ -36,6 +36,17 @@ def has_valid_pytest_mark_decorator(d):
         d.value.value, ast.Name)) or (isinstance(d, ast.Call) and d.func.attr == 'skip')
 
 
+def flatten_list(in_list):
+    flat_list = []
+    for element in in_list:
+        if type(element) is list:
+            for item in element:
+                flat_list.append(item)
+        else:
+            flat_list.append(element)
+    return flat_list
+
+
 if __name__ == "__main__":
     errs = []
     matrix = set()
@@ -49,10 +60,5 @@ if __name__ == "__main__":
                     if res is not None:
                         errs.append(res)
 
-    if len(errs) > 0:
-        for err in itertools.chain(*errs):
-            print(err)
 
-        sys.exit(1)
-
-    print(json.dumps({'module': list(matrix)}))
+    print(json.dumps({'failed': len(errs) > 0, 'errors': flatten_list(errs), 'module': list(matrix)}))

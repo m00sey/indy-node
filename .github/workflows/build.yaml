@@ -32,8 +32,8 @@ jobs:
         id: vdc
         uses: ./.github/actions/validate-decorators
         with:
-          common: ${{fromJson(needs.decorator-checks.outputs.matrix-common)}}
-          node: ${{fromJson(needs.decorator-checks.outputs.matrix-node)}}
+          common: ${{needs.decorator-checks.outputs.matrix-common}}
+          node: ${{needs.decorator-checks.outputs.matrix-node}}
 
   indy_common:
     name: Build Indy Common

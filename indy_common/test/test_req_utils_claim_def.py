@@ -73,12 +73,10 @@ def read_claim_def_request_no_tag(read_claim_def_request):
     return read_claim_def_request
 
 
-@pytest.mark.test
 def test_get_write_claim_def_signature_type(write_claim_def_request):
     assert 'CL1' == get_write_claim_def_signature_type(write_claim_def_request)
 
 
-@pytest.mark.test
 def test_get_write_claim_def_signature_type_default(write_claim_def_request_no_signature_type):
     assert 'CL' == get_write_claim_def_signature_type(write_claim_def_request_no_signature_type)
 

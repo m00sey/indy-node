@@ -38,7 +38,6 @@ EXPECTED_ORDERED_FIELDS_CONSTRAINT_ENTITY = OrderedDict([
 ])
 
 
-@pytest.mark.types
 def test_has_expected_fields_entity():
     actual_field_names = OrderedDict(ConstraintEntityField.schema).keys()
     assert actual_field_names == EXPECTED_ORDERED_FIELDS_CONSTRAINT_ENTITY.keys()

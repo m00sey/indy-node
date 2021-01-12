@@ -1,15 +1,28 @@
 const core = require('@actions/core');
 
-try {
-  const common = core.getInput('common');
-  console.log(`${common}`);
+async function run() {
+    // Output from `pytest_mark_check.py`
+    // {
+    //  "failed": boolean,
+    //  "errors": array,
+    //  "module": map
+    // }
+    let hasErrors = function bool(parsed) {
+        return true
+    };
 
-  const node = core.getInput('node');
-  console.log(`${node}`);
+    try {
+        const common = core.getInput('common');
+        const node = core.getInput('node');
 
-  core.setOutput("matrix-common", common);
-  core.setOutput("matrix-node", node);
+        const commonJSON = JSON.parse(common)
 
-} catch (error) {
-  core.setFailed(error.message);
+        if (commonJSON.status == undefined) {
+            core.setFailed('invalid input', common);
+        }
+
+    } catch (error) {
+        core.setFailed(error.message);
+    }
 }
+run();
