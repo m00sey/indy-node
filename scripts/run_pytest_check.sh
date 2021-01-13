@@ -10,7 +10,8 @@ do
     result=$(echo $out | jq '.status')
 
     if [[ "$result" = "\"success\"" ]]; then
-        echo $fin | jq 'del(.status, .errors)'
+        echo $out
+        fin=$(echo $out | jq 'del(.status, .errors)')
         echo "::set-output name=matrix-$m::$fin"
     else
         ((errs=errs+1))
