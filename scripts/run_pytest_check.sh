@@ -9,7 +9,7 @@ do
 
     result=$(echo $out | jq '.status')
 
-    echo ("poop")
+    echo "poop"
     echo ($out)
 
     if [[ "$result" = "\"success\"" ]]; then
