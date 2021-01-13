@@ -1,6 +1,6 @@
 #!/bin/bash
 
-modules =( "common" "node" )
+modules=( "common" "node" )
 
 for i in "${modules[@]}"
 do
