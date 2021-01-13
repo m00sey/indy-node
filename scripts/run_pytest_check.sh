@@ -7,8 +7,10 @@ for m in "${modules[@]}"
 do
     out=$(python3 scripts/pytest_mark_check.py indy_$m)
     
-    echo $out
+    fin=$(echo $out | jq 'del(.status, .errors)')
     
+    echo $fin
+
     # result=$(echo $out | jq '.status')
 
     # if [[ "$result" = "\"success\"" ]]; then
