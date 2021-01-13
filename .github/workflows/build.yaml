@@ -18,6 +18,7 @@ jobs:
       - name: Check test decorators
         id: ctd
         run: |
+          echo `pwd`
           chmod +x ./scripts/run_pytest_check.sh
           ./scripts/run_pytest_check.sh
 
