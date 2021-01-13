@@ -22,7 +22,7 @@ errs=0
 #     # fi
 # done
 
-echo "::set-output name=matrix-common::$(python scripts/pytest_mark_check.py indy_common)"
+echo "::set-output name=matrix-common::$(python3 scripts/pytest_mark_check.py indy_common)"
 
 if [[ errs -gt 0 ]]; then 
     exit 1
