@@ -5,7 +5,7 @@ errs=0
 
 # for m in "${modules[@]}"
 # do
-#     out=$(python3 scripts/pytest_mark_check.py indy_$m)
+    out=$(python3 scripts/pytest_mark_check.py indy_common)
     
 #     fin=$(echo $out | jq 'del(.status, .errors)')
     
