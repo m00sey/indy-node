@@ -5,12 +5,12 @@ from indy_node.test.helper import sdk_rotate_verkey
 
 
 @pytest.mark.did
-def testAddDidWithVerkey(nym_full_vk):
+def test_add_did_with_verkey(nym_full_vk):
     pass
 
 
 @pytest.mark.did
-def testRetrieveFullVerkey(looper, tconf, nodeSet, sdk_pool_handle, sdk_wallet_trustee, nym_full_vk):
+def test_retrieve_full_verkey(looper, tconf, nodeSet, sdk_pool_handle, sdk_wallet_trustee, nym_full_vk):
     nwh, ndid, nvk = nym_full_vk
     resp_data = nym_get(looper, sdk_pool_handle, sdk_wallet_trustee, ndid)
     assert ndid == resp_data[0]
@@ -18,14 +18,14 @@ def testRetrieveFullVerkey(looper, tconf, nodeSet, sdk_pool_handle, sdk_wallet_t
 
 
 @pytest.mark.did
-def testChangeVerkeyToNewVerkey(looper, tconf, nodeSet, sdk_pool_handle, nym_full_vk):
+def test_change_verkey_to_new_verkey(looper, tconf, nodeSet, sdk_pool_handle, nym_full_vk):
     wh, did, nvk = nym_full_vk
     new_verkey = sdk_rotate_verkey(looper, sdk_pool_handle, wh, did, did)
     assert nvk != new_verkey
 
 
 @pytest.mark.did
-def testRetrieveChangedVerkey(looper, tconf, nodeSet, sdk_pool_handle, sdk_wallet_trustee, nym_full_vk):
+def test_retrieve_changed_verkey(looper, tconf, nodeSet, sdk_pool_handle, sdk_wallet_trustee, nym_full_vk):
     wh, did, vk = nym_full_vk
     new_vk = sdk_rotate_verkey(looper, sdk_pool_handle, wh, did, did)
     resp_data = nym_get(looper, sdk_pool_handle, sdk_wallet_trustee, did)
@@ -35,7 +35,7 @@ def testRetrieveChangedVerkey(looper, tconf, nodeSet, sdk_pool_handle, sdk_walle
 
 
 @pytest.mark.did
-def testVerifySigWithChangedVerkey(looper, tconf, nodeSet, sdk_pool_handle, nym_full_vk):
+def test_verify_sig_with_changed_verkey(looper, tconf, nodeSet, sdk_pool_handle, nym_full_vk):
     wh, did, vk = nym_full_vk
     new_vk = sdk_rotate_verkey(looper, sdk_pool_handle, wh, did, did)
     # check sign by getting nym from ledger - if succ then sign is ok

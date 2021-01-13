@@ -16,7 +16,7 @@ nodeCount = 7
 
 
 @pytest.mark.suspension
-def testSuspendNode(looper, sdk_pool_handle, sdk_wallet_trustee, nodeSet,
+def test_suspend_node(looper, sdk_pool_handle, sdk_wallet_trustee, nodeSet,
                     tdir, tconf, allPluginsPath):
     """
     Suspend a node and then cancel suspension. Suspend while suspended
@@ -55,7 +55,7 @@ def _wait_view_change_finish(looper, nodes, view_no):
 
 
 @pytest.mark.suspension
-def testDemoteNodeWhichWasNeverActive(looper, nodeSet, sdk_pool_handle,
+def test_demote_node_which_was_never_active(looper, nodeSet, sdk_pool_handle,
                                       sdk_wallet_trustee, tdir, tconf,
                                       allPluginsPath):
     """

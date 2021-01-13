@@ -12,7 +12,7 @@ whitelist = ['Failed to upgrade node',
 
 
 @pytest.mark.upgrade
-def testTimeoutWorks(nodeSet, looper, monkeypatch, tconf):
+def test_timeout_works(nodeSet, looper, monkeypatch, tconf):
     """
     Checks that after some timeout upgrade is marked as failed if
     it not started

@@ -5,12 +5,12 @@ from indy_node.test.helper import sdk_rotate_verkey
 
 
 @pytest.mark.did
-def testAddDidWithoutAVerkey(nym_empty_vk):
+def test_add_did_without_a_verkey(nym_empty_vk):
     pass
 
 
 @pytest.mark.did
-def testRetrieveEmptyVerkey(looper, tconf, nodeSet, sdk_pool_handle, sdk_wallet_trustee, nym_empty_vk):
+def test_retrieve_empty_verkey(looper, tconf, nodeSet, sdk_pool_handle, sdk_wallet_trustee, nym_empty_vk):
     nwh, ndid = nym_empty_vk
     resp_data = nym_get(looper, sdk_pool_handle, sdk_wallet_trustee, ndid)
     assert ndid == resp_data[0]
@@ -18,7 +18,7 @@ def testRetrieveEmptyVerkey(looper, tconf, nodeSet, sdk_pool_handle, sdk_wallet_
 
 
 @pytest.mark.did
-def testChangeEmptyVerkeyToNewVerkey(looper, tconf, nodeSet, sdk_pool_handle, sdk_wallet_trustee, nym_empty_vk):
+def test_change_empty_verkey_to_new_verkey(looper, tconf, nodeSet, sdk_pool_handle, sdk_wallet_trustee, nym_empty_vk):
     _, did = nym_empty_vk
     trw, trd = sdk_wallet_trustee
     new_vk = sdk_rotate_verkey(looper, sdk_pool_handle, trw, trd, did)
@@ -26,7 +26,7 @@ def testChangeEmptyVerkeyToNewVerkey(looper, tconf, nodeSet, sdk_pool_handle, sd
 
 
 @pytest.mark.did
-def testRetrieveChangedVerkey(looper, tconf, nodeSet, sdk_pool_handle, sdk_wallet_trustee, nym_empty_vk):
+def test_retrieve_changed_verkey(looper, tconf, nodeSet, sdk_pool_handle, sdk_wallet_trustee, nym_empty_vk):
     _, did = nym_empty_vk
     trw, trd = sdk_wallet_trustee
     new_vk = sdk_rotate_verkey(looper, sdk_pool_handle, trw, trd, did)
@@ -36,7 +36,7 @@ def testRetrieveChangedVerkey(looper, tconf, nodeSet, sdk_pool_handle, sdk_walle
 
 
 @pytest.mark.did
-def testVerifySigWithChangedVerkey(looper, tconf, nodeSet, sdk_pool_handle, sdk_wallet_trustee, nym_empty_vk):
+def test_verify_sig_with_changed_verkey(looper, tconf, nodeSet, sdk_pool_handle, sdk_wallet_trustee, nym_empty_vk):
     wh, did = nym_empty_vk
     trw, trd = sdk_wallet_trustee
     new_vk = sdk_rotate_verkey(looper, sdk_pool_handle, trw, trd, did)

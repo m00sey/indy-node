@@ -29,7 +29,7 @@ def tconf(tconf, tdir):
 
 
 @pytest.mark.upgrade
-def testNodeControlPerformsMigrations(monkeypatch, tdir, looper, tconf):
+def test_node_control_performs_migrations(monkeypatch, tdir, looper, tconf):
     version = bumpedVersion()
     stdout = 'teststdout'
     migrationFile = 'migrationProof'

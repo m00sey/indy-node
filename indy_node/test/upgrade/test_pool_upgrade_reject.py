@@ -12,14 +12,14 @@ whitelist = ['Failed to upgrade node']
 
 
 @pytest.mark.upgrade
-def testNodeRejectsPoolUpgrade(looper, nodeSet, tdir, sdk_pool_handle,
+def test_node_rejects_pool_upgrade(looper, nodeSet, tdir, sdk_pool_handle,
                                sdk_wallet_trustee, invalidUpgrade):
     req = sdk_send_upgrade(looper, sdk_pool_handle, sdk_wallet_trustee, invalidUpgrade)
     sdk_get_bad_response(looper, [req], RequestNackedException, 'since time span between upgrades')
 
 
 @pytest.mark.upgrade
-def testOnlyTrusteeCanSendPoolUpgrade(looper, sdk_pool_handle, sdk_wallet_steward, validUpgrade):
+def test_only_trustee_can_send_pool_upgrade(looper, sdk_pool_handle, sdk_wallet_steward, validUpgrade):
     # A steward sending POOL_UPGRADE but txn fails
     validUpgrade = deepcopy(validUpgrade)
     validUpgrade[NAME] = 'upgrade-20'
@@ -29,7 +29,7 @@ def testOnlyTrusteeCanSendPoolUpgrade(looper, sdk_pool_handle, sdk_wallet_stewar
 
 
 @pytest.mark.upgrade
-def testNonTrustyCannotCancelUpgrade(looper, validUpgradeSent, sdk_pool_handle,
+def test_non_trusty_cannot_cancel_upgrade(looper, validUpgradeSent, sdk_pool_handle,
                                      sdk_wallet_steward, validUpgrade):
     validUpgradeCopy = deepcopy(validUpgrade)
     validUpgradeCopy[ACTION] = CANCEL
@@ -50,7 +50,7 @@ def test_accept_then_reject_upgrade(
 
 
 @pytest.mark.upgrade
-def testOnlyTrusteeCanSendPoolUpgradeForceTrue(
+def test_only_trustee_can_send_pool_upgrade_force_true(
         looper, sdk_pool_handle, sdk_wallet_steward, validUpgradeExpForceTrue):
     req = sdk_send_upgrade(looper, sdk_pool_handle, sdk_wallet_steward, validUpgradeExpForceTrue)
     sdk_get_bad_response(looper, [req], RequestNackedException, 'Not enough TRUSTEE signatures')

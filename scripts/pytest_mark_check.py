@@ -26,6 +26,17 @@ def check_for_decorator(filename, m):
             return fails
 
 
+def flatten_list(in_list):
+    flat_list = []
+    for element in in_list:
+        if type(element) is list:
+            for item in element:
+                flat_list.append(item)
+        else:
+            flat_list.append(element)
+    return flat_list
+
+
 # the decorator is nested and we need to unpack it to see if the origin is pytest
 # The format is <ast.Name.id>.<ast.Attribute.attr>.<ast.Attribute.attr>
 #                      pytest.                mark.             example
@@ -49,10 +60,12 @@ if __name__ == "__main__":
                     if res is not None:
                         errs.append(res)
 
+    out = {}
     if len(errs) > 0:
-        for err in itertools.chain(*errs):
-            print(err)
+        out['status'] = "failed"
+        out['errors'] = flatten_list(errs)
+    else:
+        out['status'] = "success"
+        out['module'] = list(matrix)
 
-        sys.exit(1)
-
-    print(json.dumps({'module': list(matrix)}))
+    print(json.dumps(out))

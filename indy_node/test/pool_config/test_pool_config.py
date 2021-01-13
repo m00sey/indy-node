@@ -32,7 +32,7 @@ def sdk_pool_bad_config_sent(looper, sdk_pool_handle, sdk_wallet_trustee, change
 
 
 @pytest.mark.pool_config
-def testPoolConfigInvalidSyntax(looper, sdk_pool_handle, sdk_wallet_trustee, poolConfigWTFF):
+def test_pool_config_invalid_syntax(looper, sdk_pool_handle, sdk_wallet_trustee, poolConfigWTFF):
     req = sdk_pool_bad_config_sent(looper, sdk_pool_handle, sdk_wallet_trustee,
                                    'wites', 'force', True, False)
     sdk_get_bad_response(looper, [req], RequestNackedException, 'missed fields - writes')
@@ -45,7 +45,7 @@ def testPoolConfigInvalidSyntax(looper, sdk_pool_handle, sdk_wallet_trustee, poo
 
 
 @pytest.mark.pool_config
-def testPoolConfigWritableFalse(looper, sdk_pool_handle, sdk_wallet_trustee, poolConfigWFFF):
+def test_pool_config_writable_false(looper, sdk_pool_handle, sdk_wallet_trustee, poolConfigWFFF):
     sdk_ensure_pool_config_sent(looper, sdk_pool_handle, sdk_wallet_trustee,
                                 poolConfigWFFF)
     with pytest.raises(RequestNackedException) as e:
@@ -54,7 +54,7 @@ def testPoolConfigWritableFalse(looper, sdk_pool_handle, sdk_wallet_trustee, poo
 
 
 @pytest.mark.pool_config
-def testPoolConfigWritableTrue(looper, sdk_pool_handle, sdk_wallet_trustee, poolConfigWTFF):
+def test_pool_config_writable_true(looper, sdk_pool_handle, sdk_wallet_trustee, poolConfigWTFF):
     with pytest.raises(RequestNackedException) as e:
         sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
     e.match('Pool is in readonly mode')
@@ -64,7 +64,7 @@ def testPoolConfigWritableTrue(looper, sdk_pool_handle, sdk_wallet_trustee, pool
 
 
 @pytest.mark.pool_config
-def testPoolConfigWritableFalseCanRead(looper, sdk_pool_handle, sdk_wallet_trustee, poolConfigWFFF):
+def test_pool_config_writable_false_can_read(looper, sdk_pool_handle, sdk_wallet_trustee, poolConfigWFFF):
     _, did = sdk_add_new_nym(looper, sdk_pool_handle, sdk_wallet_trustee)
     get_nym(looper, sdk_pool_handle, sdk_wallet_trustee, did)
     sdk_ensure_pool_config_sent(looper, sdk_pool_handle, sdk_wallet_trustee,
@@ -76,7 +76,7 @@ def testPoolConfigWritableFalseCanRead(looper, sdk_pool_handle, sdk_wallet_trust
 
 
 @pytest.mark.pool_config
-def testPoolUpgradeOnReadonlyPool(
+def test_pool_upgrade_on_readonly_pool(
         looper, nodeSet, sdk_pool_handle, sdk_wallet_trustee, validUpgrade, poolConfigWFFF):
     sdk_ensure_pool_config_sent(looper, sdk_pool_handle, sdk_wallet_trustee,
                                 poolConfigWFFF)

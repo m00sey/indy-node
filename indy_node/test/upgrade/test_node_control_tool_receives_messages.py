@@ -20,7 +20,7 @@ whitelist = ['Unexpected error in _upgrade test']
 
 
 @pytest.mark.upgrade
-def testNodeControlReceivesMessages(monkeypatch, looper, tdir, tconf):
+def test_node_control_receives_messages(monkeypatch, looper, tdir, tconf):
     received = m.list()
     version = bumpedVersion()
     stdout = 'teststdout'

@@ -16,7 +16,7 @@ TEST_TIMEOUT = 1
 
 
 @pytest.mark.upgrade
-def testGetRelevantMigrations():
+def test_get_relevant_migrations():
     relevantMigrations = migration_tool._get_relevant_migrations(
         TEST_MIGRATION_SCRIPTS, TEST_VERSION, TEST_NEW_VERSION)
     assert len(relevantMigrations) == 3
@@ -25,7 +25,7 @@ def testGetRelevantMigrations():
 
 
 @pytest.mark.upgrade
-def testMigrate(monkeypatch):
+def test_migrate(monkeypatch):
     testList = []
 
     monkeypatch.setattr(migration_tool, '_call_migration_script',
@@ -39,7 +39,7 @@ def testMigrate(monkeypatch):
 
 
 @pytest.mark.upgrade
-def testMigrateTimesOut(monkeypatch):
+def test_migrate_times_out(monkeypatch):
     monkeypatch.setattr(migration_tool, '_call_migration_script',
                         lambda *x: exec('raise(TimeoutError())'))
     monkeypatch.setattr(migration_tool, '_get_migration_scripts',
@@ -50,7 +50,7 @@ def testMigrateTimesOut(monkeypatch):
 
 
 @pytest.mark.upgrade
-def testGetMigrationScripts():
+def test_get_migration_scripts():
     try:
         res = migration_tool._get_migration_scripts(migration_tool._get_current_platform())
     except Exception as e:

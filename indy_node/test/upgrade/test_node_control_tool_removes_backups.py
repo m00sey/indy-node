@@ -25,7 +25,7 @@ logger = getlogger()
 
 
 @pytest.mark.upgrade
-def testNodeControlRemovesBackups(monkeypatch, tdir, looper, tconf):
+def test_node_control_removes_backups(monkeypatch, tdir, looper, tconf):
     version = bumpedVersion()
     stdout = 'teststdout'
     curr_src_ver = Upgrader.get_src_version()

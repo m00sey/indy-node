@@ -6,7 +6,7 @@ from indy_node.utils.node_control_utils import NodeControlUtil, MAX_DEPS_DEPTH
 
 
 @pytest.mark.upgrade
-def testNodeControlResolvesDependencies(monkeypatch, tconf):
+def test_node_control_resolves_dependencies(monkeypatch, tconf):
     nct = NodeControlTool(config=tconf)
     node_package = ('indy-node', '0.0.1')
     plenum_package = ('indy-plenum', '0.0.3')

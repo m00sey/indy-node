@@ -12,7 +12,7 @@ whitelist = ['Failed to upgrade node']
 
 
 @pytest.mark.upgrade
-def testTrustyCancelsUpgrade(validUpgradeSent, looper, nodeSet, sdk_pool_handle,
+def test_trusty_cancels_upgrade(validUpgradeSent, looper, nodeSet, sdk_pool_handle,
                              sdk_wallet_trustee, validUpgrade):
     validUpgradeCopy = deepcopy(validUpgrade)
     validUpgradeCopy[ACTION] = CANCEL

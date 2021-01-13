@@ -62,12 +62,12 @@ def whitelistextras(*msg):
 
 
 @pytest.mark.attrib_txn
-def testEndorserAddsAttributeForUser(sdk_added_raw_attribute):
+def test_endorser_adds_attribute_for_user(sdk_added_raw_attribute):
     pass
 
 
 @pytest.mark.attrib_txn
-def testEndorserGetAttrsForUser(looper,
+def test_endorser_get_attrs_for_user(looper,
                                    sdk_user_wallet_a,
                                    sdk_wallet_endorser,
                                    sdk_pool_handle,
@@ -117,7 +117,7 @@ def test_non_endorser_cannot_add_attribute_for_user(
 
 
 @pytest.mark.attrib_txn
-def testOnlyUsersEndorserCanAddAttribute(
+def test_only_users_endorser_can_add_attribute(
         nodeSet,
         looper,
         attributeData,
@@ -134,7 +134,7 @@ def testOnlyUsersEndorserCanAddAttribute(
 
 
 @pytest.mark.attrib_txn
-def testStewardCannotAddUsersAttribute(
+def test_steward_cannot_add_users_attribute(
         nodeSet,
         looper,
         attributeData,
@@ -153,7 +153,7 @@ def testStewardCannotAddUsersAttribute(
 # TODO: Ask Jason, if getting the latest attribute makes sense since in case
 # of encrypted and hashed attributes, there is no name.
 @pytest.mark.attrib_txn
-def testLatestAttrIsReceived(
+def test_latest_attr_is_received(
         looper,
         nodeSet,
         sdk_wallet_endorser,
@@ -225,7 +225,7 @@ def test_attr_with_no_dest_added(nodeSet, looper, attributeData):
 
 
 @pytest.mark.skip(reason="SOV-561. Test not implemented")
-def testGetTxnsNoSeqNo():
+def test_get_txns_no_seq_no():
     """
     Test GET_TXNS from client and do not provide any seqNo to fetch from
     """
@@ -234,7 +234,7 @@ def testGetTxnsNoSeqNo():
 
 @pytest.mark.skip(reason="SOV-560. Come back to it later since "
                          "requestPendingTxns move to wallet")
-def testGetTxnsSeqNo(nodeSet, endorserWallet, looper):
+def test_get_txns_seq_no(nodeSet, endorserWallet, looper):
     pass
     """
     Test GET_TXNS from client and provide seqNo to fetch from
@@ -251,12 +251,12 @@ def testGetTxnsSeqNo(nodeSet, endorserWallet, looper):
 
 
 @pytest.mark.skip(reason="SOV-560. Attribute encryption is done in client")
-def testEndorserAddedAttributeIsEncrypted(addedEncryptedAttribute):
+def test_endorser_added_attribute_is_encrypted(addedEncryptedAttribute):
     pass
 
 
 @pytest.mark.skip(reason="SOV-560. Attribute Disclosure is not done for now")
-def testEndorserDisclosesEncryptedAttribute(
+def test_endorser_discloses_encrypted_attribute(
         addedEncryptedAttribute,
         symEncData,
         looper,
@@ -282,7 +282,7 @@ def testEndorserDisclosesEncryptedAttribute(
 
 
 @pytest.mark.skip(reason="SOV-561. Pending implementation")
-def testEndorserAddedAttributeCanBeChanged(sdk_added_raw_attribute):
+def test_endorser_added_attribute_can_be_changed(sdk_added_raw_attribute):
     # TODO but only by user(if user has taken control of his identity) and
     # endorser
     raise NotImplementedError

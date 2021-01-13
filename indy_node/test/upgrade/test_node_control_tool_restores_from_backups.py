@@ -24,7 +24,7 @@ whitelist = ['Unexpected error in _upgrade test']
 
 
 @pytest.mark.upgrade
-def testNodeControlRestoresFromBackups(monkeypatch, tdir, looper, tconf):
+def test_node_control_restores_from_backups(monkeypatch, tdir, looper, tconf):
     version = bumpedVersion()
     stdout = 'teststdout'
     backupWasRestored = m.Value('b', False)

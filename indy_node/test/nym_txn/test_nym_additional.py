@@ -154,6 +154,6 @@ def test_remove_verkey_from_did(verkey_removed_from_existing_did):
     reason="SOV-568. Obsolete assumption, if an identity has set "
            "its verkey to blank, no-one including "
            "itself can change it")
-def testNewverkey_added_to_nym(be, do, philCli, abbrevIdr,
+def test_newverkey_added_to_nym(be, do, philCli, abbrevIdr,
                                verkeyRemovedFromExistingDID):
     pass

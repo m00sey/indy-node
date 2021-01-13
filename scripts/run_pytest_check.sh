@@ -1,17 +1,22 @@
 #!/bin/bash
 
-modules=( "common" "node" )
+modules=( "indy_common" "indy_node" )
+errs=0
 
-for i in "${modules[@]}"
+for m in "${modules[@]}"
 do
-    echo "indy_$i"
-    out=$(python3 scripts/pytest_mark_check.py indy_$i)
-    echo $out
+    out=$(python3 scripts/pytest_mark_check.py $m)
+    result=$(echo $out | jq '.status')
+
+    if [[ "$result" = "\"success\"" ]]; then
+        echo "::set-output name=matrix-$m::$(echo $out | jq 'del(.status)' | jq 'del(.errs)')"
+    else
+        ((errs=errs+1))
+        echo "$(echo $out | jq '.errors' | jq .[])"
+    fi
 done
 
-echo `jq`
 
-echo $GITHUB_WORKSPACE
-
-# echo "::set-output name=matrix-common::$(python scripts/pytest_mark_check.py indy_common)"
-# echo "::set-output name=matrix-node::$(python scripts/pytest_mark_check.py indy_node)"
+if [[ errs -gt 0 ]]; then 
+    exit 1
+fi

@@ -48,7 +48,7 @@ def _checkFuture(future):
 
 
 @pytest.mark.upgrade
-def testScheduleNodeUpgrade(tconf, nodeSet):
+def test_schedule_node_upgrade(tconf, nodeSet):
     """
     Tests that upgrade scheduling works. For that it starts mock
     control service, schedules upgrade for near future and then checks that
@@ -84,7 +84,7 @@ def testScheduleNodeUpgrade(tconf, nodeSet):
     assert result == expectedResult.toJson()
 
 
-# def testCancelNodeUpgrade():
+# def test_cancel_node_upgrade():
 #     """
 #     Test cancellation of scheduled upgrades. This test schedules upgrade for
 #     unreachable moment in future and then tries to cancel that
