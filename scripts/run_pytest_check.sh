@@ -11,7 +11,7 @@ do
 
     if [[ "$result" = "\"success\"" ]]; then
         echo $(echo $out | jq 'del(.status, .errors)')
-        echo "::set-output name=matrix-$m::$(echo $out | jq 'del(.status, .errors)')"
+        echo "::set-output name=matrix-$m::{$(echo $out | jq 'del(.status, .errors)')}"
     else
         ((errs=errs+1))
         echo "$(echo $out | jq '.errors' | jq .[])"
