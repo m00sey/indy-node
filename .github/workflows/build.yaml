@@ -7,7 +7,7 @@ jobs:
     needs: lint
     runs-on: ubuntu-18.04
     #TODO: move this to hyperledger?
-    container: m00sey/indy-node-build:latest
+    container: m00sey/indy-node-build:with-fail
     outputs:
       matrix-common: ${{ steps.ctd.outputs.matrix-common }}
       matrix-node: ${{ steps.ctd.outputs.matrix-node }}
@@ -18,8 +18,8 @@ jobs:
       - name: Check test decorators
         id: ctd
         run: |
-          echo "::set-output name=matrix-common::$(python scripts/pytest_mark_check.py indy_common)"
-          echo "::set-output name=matrix-node::$(python scripts/pytest_mark_check.py indy_node)"
+          chmod +x ./scripts/run_pytest_check.sh
+          ./scripts/run_pytest_check.sh
 
   indy_common:
     name: Build Indy Common
