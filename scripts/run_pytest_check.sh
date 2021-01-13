@@ -13,7 +13,7 @@ do
         echo $out
         fin=$(echo $out | jq 'del(.status, .errors)')
         echo $fin
-        echo "::set-output name=matrix-$m::{$fin}"
+        echo "::set-output name=matrix-$m::$fin"
     else
         ((errs=errs+1))
         echo "$(echo $out | jq '.errors' | jq .[])"
