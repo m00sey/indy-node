@@ -6,6 +6,9 @@ errs=0
 for m in "${modules[@]}"
 do
     out=$(python3 scripts/pytest_mark_check.py indy_$m)
+
+    echo "$out"
+    
     result=$(echo $out | jq '.status')
 
     if [[ "$result" = "\"success\"" ]]; then
