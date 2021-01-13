@@ -19,6 +19,7 @@ jobs:
         id: ctd
         run: |
           echo `pwd`
+          echo `ls -al scripts`
           chmod +x ./scripts/run_pytest_check.sh
           ./scripts/run_pytest_check.sh
 
