@@ -6,8 +6,10 @@ for i in "${modules[@]}"
 do
     echo "indy_$i"
     out=$(python3 scripts/pytest_mark_check.py indy_$i)
-    echo out
+    echo $out
 done
+
+echo `jq`
 
 echo $GITHUB_WORKSPACE
 
