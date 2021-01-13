@@ -1,11 +1,11 @@
 #!/bin/bash
 
-modules=( "indy_common" "indy_node" )
+modules=( "common" "node" )
 errs=0
 
 for m in "${modules[@]}"
 do
-    out=$(python3 scripts/pytest_mark_check.py $m)
+    out=$(python3 scripts/pytest_mark_check.py indy_$m)
     result=$(echo $out | jq '.status')
 
     if [[ "$result" = "\"success\"" ]]; then
