@@ -6,13 +6,13 @@ errs=0
 for m in "${modules[@]}"
 do
     out=$(python3 scripts/pytest_mark_check.py indy_$m)
-
+    
+    echo $out
+    
     result=$(echo $out | jq '.status')
 
     if [[ "$result" = "\"success\"" ]]; then
-        echo $out
         fin=$(echo $out | jq 'del(.status, .errors)')
-        echo $fin
         echo "::set-output name=matrix-$m::$fin"
     else
         ((errs=errs+1))
