@@ -20,7 +20,7 @@ def test_has_expected_fields_list():
     assert actual_field_names == EXPECTED_ORDERED_FIELDS_CONSTRAINT_LIST.keys()
 
 
-@pytest.mark.types
+# @pytest.mark.types
 def test_has_expected_validators_list():
     schema = dict(ConstraintListField().schema)
     for field, validator in EXPECTED_ORDERED_FIELDS_CONSTRAINT_LIST.items():
