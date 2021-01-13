@@ -9,15 +9,15 @@ do
     
     echo $out
     
-    result=$(echo $out | jq '.status')
+    # result=$(echo $out | jq '.status')
 
-    if [[ "$result" = "\"success\"" ]]; then
-        fin=$(echo $out | jq 'del(.status, .errors)')
-        echo "::set-output name=matrix-$m::$fin"
-    else
-        ((errs=errs+1))
-        echo "$(echo $out | jq '.errors' | jq .[])"
-    fi
+    # if [[ "$result" = "\"success\"" ]]; then
+    #     fin=$(echo $out | jq 'del(.status, .errors)')
+    #     echo "::set-output name=matrix-$m::$fin"
+    # else
+    #     ((errs=errs+1))
+    #     echo "$(echo $out | jq '.errors' | jq .[])"
+    # fi
 done
 
 
