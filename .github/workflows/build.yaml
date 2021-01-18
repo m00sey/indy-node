@@ -96,3 +96,13 @@ jobs:
       - name: pub
         run: |
           echo "publish"
+
+  publish-release:
+    name: Publish release
+    runs-on: ubuntu-20.04
+    needs: ['indy-common', 'indy-node']
+    if: github.event_name == 'push' && (github.repository == 'm00sey/indy-node' && github.ref == 'refs/heads/master')
+    steps:
+      - name: pub
+        run: |
+          echo "publish"
