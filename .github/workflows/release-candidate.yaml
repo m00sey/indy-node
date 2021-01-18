@@ -1,0 +1,40 @@
+name: indy-node-release-candidate
+on:
+  push:
+    tags:
+      - '*-rc'
+
+jobs:
+  system-tests:
+    needs: tests
+    name: Indy node system tests
+    runs-on: ubuntu-20.04
+    steps:
+      - name: "run system tests"
+        run: |
+          echo "run system tests"
+  #transpose build-scripts steps?
+  package:
+    needs: system-tests
+    runs-on: ubuntu-20.04
+
+  #indy-node in pypi
+  publish-pypi:
+    needs: system-tests
+    name: PublishIndy Node to PyPI
+    runs-on: ubuntu-20.04
+    steps:
+      - name: "pypi publish"
+        run: |
+          echo "publish pypi"
+
+  #indy-node deb package in https://repo.sovrin.org/deb ${{ matrix.ubuntu-release }} master
+  publish-deb:
+    needs: system-tests
+    name: Publish Indy Node deb package
+    runs-on: ubuntu-18.04
+    steps:
+      - name: "deb publish"
+        run: |
+          echo "publish deb"
+    #translate ci/pipeline.groovy into... something? docker container? steps?
