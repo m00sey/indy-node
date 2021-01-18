@@ -21,7 +21,7 @@ jobs:
           chmod +x ./scripts/run_pytest_check.sh
           ./scripts/run_pytest_check.sh
 
-  indy_common:
+  indy-common:
     name: Build Indy Common
     needs: decorator-checks
     runs-on: ubuntu-18.04
@@ -48,7 +48,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           report_paths: test-result-common-${{ matrix.module }}.xml
 
-  indy_node:
+  indy-node:
     name: Build Indy Node
     needs: decorator-checks
     runs-on: ubuntu-18.04
@@ -93,6 +93,6 @@ jobs:
     needs: ['indy-common', 'indy-node']
     if: github.event_name == 'push' && (github.repository == 'm00sey/indy-node' && github.ref == 'refs/heads/release*')
     steps:
-      - name: oub
+      - name: pub
         run: |
           echo "publish"
