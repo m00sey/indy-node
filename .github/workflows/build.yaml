@@ -91,7 +91,7 @@ jobs:
     name: Publish release candidate
     runs-on: ubuntu-20.04
     needs: ['indy-common', 'indy-node']
-    if: github.event_name == 'push' && (github.repository == 'm00sey/indy-node' && github.ref == 'refs/heads/release/**')
+    if: github.event_name == 'push' && (github.repository == 'm00sey/indy-node' && github.ref == 'refs/heads/release')
     steps:
       - name: pub
         run: |
