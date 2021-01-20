@@ -1,5 +1,6 @@
 FROM hyperledger/indy-core-baseci:0.0.3-master
 LABEL maintainer="Hyperledger <hyperledger-indy@lists.hyperledger.org>"
+OWNER lfhyperledger
 
 RUN apt-get update -y && apt-get install -y \
     python3-nacl \
