@@ -74,7 +74,7 @@ jobs:
       - lint
     runs-on: ubuntu-18.04
     container:
-      image: ghcr.io/m00sey/indy-node/indy-node-build
+      image: ghcr.io/${{ github.repository }}/indy-node-build
     outputs:
       matrix-common: ${{ steps.ctd.outputs.matrix-common }}
       matrix-node: ${{ steps.ctd.outputs.matrix-node }}
@@ -93,7 +93,7 @@ jobs:
     needs: decorator-checks
     runs-on: ubuntu-18.04
     container:
-      image: ghcr.io/m00sey/indy-node/indy-node-build
+      image: ghcr.io/${{ github.repository }}/indy-node-build
     strategy:
       matrix: ${{fromJson(needs.decorator-checks.outputs.matrix-common)}}
       fail-fast: false
@@ -120,7 +120,7 @@ jobs:
     needs: decorator-checks
     runs-on: ubuntu-18.04
     container:
-      image: ghcr.io/m00sey/indy-node/indy-node-build
+      image: ghcr.io/${{ github.repository }}/indy-node-build
     strategy:
       matrix: ${{fromJson(needs.decorator-checks.outputs.matrix-node)}}
       fail-fast: false
