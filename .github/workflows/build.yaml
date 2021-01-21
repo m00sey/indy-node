@@ -39,6 +39,7 @@ jobs:
           docker push ghcr.io/${GITHUB_REPOSITORY}/indy-node-lint:latest
           mkdir -p ${{ github.workspace }}/cache
           touch ${{ github.workspace }}/cache/${{ env.CACHE_KEY_LINT }}
+          ls ${{ github.workspace }}/cache
 
 
   decorator-checks:
