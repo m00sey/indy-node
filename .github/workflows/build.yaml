@@ -15,7 +15,7 @@ jobs:
         run: |
           LINT_DOCKERFILE_HASH=${{ hashFiles('.github/workflows/build/Dockerfile') }}
           echo "::set-output name=CACHE_KEY_LINT::$LINT_DOCKERFILE_HASH"
-          echo "::set-output name=DOCKER_IMG_NAME_LINT::lint:$LINT_DOCKERFILE_HASH"
+          echo "::set-output name=DOCKER_IMG_NAME_LINT::indy-node-lint:$LINT_DOCKERFILE_HASH"
            
   build-lint-image:
     needs: workflow-setup
@@ -37,10 +37,12 @@ jobs:
       - name: If NOT found in cache, build and cache image.
         if: steps.cache-image-lint.outputs.cache-hit != 'true'
         run: |
-          echo $CACHE_KEY_LINT
-          echo $DOCKER_IMG_NAME_LINT
-          echo ${{ secrets.CR_PAT }} | docker login ghcr.io --username ${{ secrets.CR_USER }} --password-stdin
-          docker build -t $DOCKER_IMG_NAME_LINT -f .github/workflows/lint/Dockerfile .
+          echo ${CACHE_KEY_LINT}
+          echo ${DOCKER_IMG_NAME_LINT}
+          echo ${GITHUB_REPOSITORY}
+
+          docker build -f .github/workflows/lint/Dockerfile --no-cache -t ${GITHUB_REPOSITORY}/${DOCKER_IMG_NAME_LINT}
+          docker tag ${GITHUB_REPOSITORY}/${DOCKER_IMG_NAME_LINT} ghcr.io/${GITHUB_REPOSITORY}:${DOCKER_IMG_NAME_LINT}
           docker push ghcr.io/${GITHUB_REPOSITORY}:$DOCKER_IMG_NAME_LINT
 
 

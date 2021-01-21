@@ -2,7 +2,7 @@
 FROM ubuntu:18.04
 LABEL maintainer="Kevin Griffin <griffin.kev@gmail.com>"
 
-RUN apt-get update && apt-get dist-upgrade -y
+RUN apt-get update --fix-missing && apt-get dist-upgrade -y
 
 # Install environment
 RUN apt-get install -y \
