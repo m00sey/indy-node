@@ -62,7 +62,7 @@ jobs:
           echo ${{ secrets.CR_PAT }} | docker login ghcr.io --username ${{ secrets.CR_USER }} --password-stdin
           docker build -f .github/workflows/build/Dockerfile --no-cache -t ${GITHUB_REPOSITORY}/indy-node-build:${{ env.CACHE_KEY_BUILD }} .
           docker tag ${GITHUB_REPOSITORY}/indy-node-build:${{ env.CACHE_KEY_BUILD }} ghcr.io/${GITHUB_REPOSITORY}/indy-node-build:latest
-          docker push ghcr.io/${GITHUB_REPOSITORY}/indy-node-linbuildt:latest
+          docker push ghcr.io/${GITHUB_REPOSITORY}/indy-node-build:latest
           mkdir -p ${GITHUB_WORKSPACE}/cache
           touch ${GITHUB_WORKSPACE}/cache/${{ env.CACHE_KEY_BUILD }}
 
