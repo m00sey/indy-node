@@ -23,6 +23,7 @@ jobs:
     env:
       DOCKER_BUILDKIT: 1
       CACHE_KEY_LINT: ${{ needs.workflow-setup.outputs.CACHE_KEY_LINT }}
+      DOCKER_IMG_NAME_LINT: ${{ needs.workflow-setup.outputs.DOCKER_IMG_NAME_LINT }}
     steps:
       - name: Git checkout
         uses: actions/checkout@v2
@@ -36,6 +37,8 @@ jobs:
       - name: If NOT found in cache, build and cache image.
         if: steps.cache-image-lint.outputs.cache-hit != 'true'
         run: |
+          echo $CACHE_KEY_LINT
+          echo $DOCKER_IMG_NAME_LINT
           echo ${{ secrets.CR_PAT }} | docker login ghcr.io --username ${{ secrets.CR_USER }} --password-stdin
           docker build -t $DOCKER_IMG_NAME_LINT -f .github/workflows/lint/Dockerfile .
           docker push ghcr.io/${GITHUB_REPOSITORY}:$DOCKER_IMG_NAME_LINT
