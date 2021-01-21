@@ -6,6 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       CACHE_KEY_LINT: ${{ steps.cache.outputs.CACHE_KEY_LINT }}
+      CACHE_KEY_BUILD: ${{ steps.cache.outputs.CACHE_KEY_BUILD }}
     steps:
       - name: Git checkout
         uses: actions/checkout@v2
@@ -14,6 +15,8 @@ jobs:
         run: |
           LINT_DOCKERFILE_HASH=${{ hashFiles('.github/workflows/lint/Dockerfile') }}
           echo "::set-output name=CACHE_KEY_LINT::$LINT_DOCKERFILE_HASH"
+          BUILD_DOCKERFILE_HASH=${{ hashFiles('.github/workflows/build/Dockerfile') }}
+          echo "::set-output name=CACHE_KEY_BUILD::$BUILD_DOCKERFILE_HASH"
            
   build-lint-image:
     needs: workflow-setup
@@ -30,7 +33,7 @@ jobs:
         with:
           path: ${GITHUB.WORKSPACE}/cache
           key: ${{ env.CACHE_KEY_LINT }}
-      - name: If NOT found in cache, build and cache image.
+      - name: If NOT found in cache, build and push image.
         if: steps.cache-image-lint.outputs.cache-hit != 'true'
         run: |
           echo ${{ secrets.CR_PAT }} | docker login ghcr.io --username ${{ secrets.CR_USER }} --password-stdin
@@ -40,13 +43,40 @@ jobs:
           mkdir -p ${GITHUB.WORKSPACE}/cache
           touch ${GITHUB.WORKSPACE}/cache/${{ env.CACHE_KEY_LINT }}
 
+  build-test-image:
+    needs: workflow-setup
+    runs-on: ubuntu-latest
+    env:
+      DOCKER_BUILDKIT: 1
+      CACHE_KEY_LINT: ${{ needs.workflow-setup.outputs.CACHE_KEY_BUILD }}
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+      - name: Try load from cache.
+        id: cache-image-build
+        uses: actions/cache@v2
+        with:
+          path: ${GITHUB.WORKSPACE}/cache
+          key: ${{ env.CACHE_KEY_BUILD }}
+      - name: If NOT found in cache, build and push image.
+        if: steps.cache-image-build.outputs.cache-hit != 'true'
+        run: |
+          echo ${{ secrets.CR_PAT }} | docker login ghcr.io --username ${{ secrets.CR_USER }} --password-stdin
+          docker build -f .github/workflows/build/Dockerfile --no-cache -t ${GITHUB_REPOSITORY}/indy-node-build:${{ env.CACHE_KEY_BUILD }} .
+          docker tag ${GITHUB_REPOSITORY}/indy-node-build:${{ env.CACHE_KEY_BUILD }} ghcr.io/${GITHUB_REPOSITORY}/indy-node-build:latest
+          docker push ghcr.io/${GITHUB_REPOSITORY}/indy-node-build:latest
+          mkdir -p ${GITHUB.WORKSPACE}/cache
+          touch ${GITHUB.WORKSPACE}/cache/${{ env.CACHE_KEY_BUILD }}
+
 
   decorator-checks:
     name: Run decorator checks
-    needs: lint
+    needs: 
+      - build-test-image
+      - lint
     runs-on: ubuntu-18.04
-    #TODO: move this to hyperledger?
-    container: m00sey/indy-node-build:latest
+    container:
+      image: ghcr.io/m00sey/indy-node/indy-node-build
     outputs:
       matrix-common: ${{ steps.ctd.outputs.matrix-common }}
       matrix-node: ${{ steps.ctd.outputs.matrix-node }}
@@ -64,8 +94,8 @@ jobs:
     name: Build Indy Common
     needs: decorator-checks
     runs-on: ubuntu-18.04
-    #TODO: move this to hyperledger?
-    container: m00sey/indy-node-build:latest
+    container:
+      image: ghcr.io/m00sey/indy-node/indy-node-build
     strategy:
       matrix: ${{fromJson(needs.decorator-checks.outputs.matrix-common)}}
       fail-fast: false
@@ -91,8 +121,8 @@ jobs:
     name: Build Indy Node
     needs: decorator-checks
     runs-on: ubuntu-18.04
-    #TODO: move this to hyperledger?
-    container: m00sey/indy-node-build:latest
+    container:
+      image: ghcr.io/m00sey/indy-node/indy-node-build
     strategy:
       matrix: ${{fromJson(needs.decorator-checks.outputs.matrix-node)}}
       fail-fast: false
@@ -120,7 +150,6 @@ jobs:
     container:
       image: ghcr.io/m00sey/indy-node/indy-node-lint
     needs:
-      - workflow-setup
       - build-lint-image
     steps:      
       - name: Check out code
