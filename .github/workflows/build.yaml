@@ -117,7 +117,7 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/m00sey/indy-node-lint
+      image: ghcr.io/m00sey/indy-node/indy-node-lint
     needs:
       - workflow-setup
       - build-lint-image
