@@ -15,7 +15,7 @@ jobs:
         run: |
           LINT_DOCKERFILE_HASH=${{ hashFiles('.github/workflows/build/Dockerfile') }}
           echo "::set-output name=CACHE_KEY_LINT::$LINT_DOCKERFILE_HASH"
-          echo "::set-output name=DOCKER_IMG_NAME_LINT::indy-node-lint:$LINT_DOCKERFILE_HASH"
+          echo "::set-output name=DOCKER_IMG_NAME_LINT::lint:$LINT_DOCKERFILE_HASH"
            
   build-lint-image:
     needs: workflow-setup
