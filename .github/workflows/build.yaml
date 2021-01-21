@@ -30,7 +30,6 @@ jobs:
         with:
           path: /tmp/imgcache
           key: ${{ env.CACHE_KEY_LINT }}
-          
       - name: If NOT found in cache, build and cache image.
         if: steps.cache-image-lint.outputs.cache-hit != 'true'
         run: |
@@ -38,6 +37,7 @@ jobs:
           docker build -f .github/workflows/lint/Dockerfile --no-cache -t ${GITHUB_REPOSITORY}/indy-node-lint:${CACHE_KEY_LINT} .
           docker tag ${GITHUB_REPOSITORY}/indy-node-lint:${CACHE_KEY_LINT} ghcr.io/${GITHUB_REPOSITORY}/indy-node-lint:latest
           docker push ghcr.io/${GITHUB_REPOSITORY}/indy-node-lint:latest
+          touch /tmp/imgcache/${CACHE_KEY_LINT}
 
 
   decorator-checks:
