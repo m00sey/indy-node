@@ -31,7 +31,7 @@ jobs:
         id: cache-image-lint
         uses: actions/cache@v2
         with:
-          path: ${GITHUB.WORKSPACE}/cache
+          path: ${GITHUB_WORKSPACE}/cache
           key: ${{ env.CACHE_KEY_LINT }}
       - name: If NOT found in cache, build and push image.
         if: steps.cache-image-lint.outputs.cache-hit != 'true'
@@ -40,8 +40,8 @@ jobs:
           docker build -f .github/workflows/lint/Dockerfile --no-cache -t ${GITHUB_REPOSITORY}/indy-node-lint:${{ env.CACHE_KEY_LINT }} .
           docker tag ${GITHUB_REPOSITORY}/indy-node-lint:${{ env.CACHE_KEY_LINT }} ghcr.io/${GITHUB_REPOSITORY}/indy-node-lint:latest
           docker push ghcr.io/${GITHUB_REPOSITORY}/indy-node-lint:latest
-          mkdir -p ${GITHUB.WORKSPACE}/cache
-          touch ${GITHUB.WORKSPACE}/cache/${{ env.CACHE_KEY_LINT }}
+          mkdir -p ${GITHUB_WORKSPACE}/cache
+          touch ${GITHUB_WORKSPACE}/cache/${{ env.CACHE_KEY_LINT }}
 
   build-test-image:
     needs: workflow-setup
@@ -56,7 +56,7 @@ jobs:
         id: cache-image-build
         uses: actions/cache@v2
         with:
-          path: ${GITHUB.WORKSPACE}/cache
+          path: ${GITHUB_WORKSPACE}/cache
           key: ${{ env.CACHE_KEY_BUILD }}
       - name: If NOT found in cache, build and push image.
         if: steps.cache-image-build.outputs.cache-hit != 'true'
@@ -65,8 +65,8 @@ jobs:
           docker build -f .github/workflows/build/Dockerfile --no-cache -t ${GITHUB_REPOSITORY}/indy-node-build:${{ env.CACHE_KEY_BUILD }} .
           docker tag ${GITHUB_REPOSITORY}/indy-node-build:${{ env.CACHE_KEY_BUILD }} ghcr.io/${GITHUB_REPOSITORY}/indy-node-build:latest
           docker push ghcr.io/${GITHUB_REPOSITORY}/indy-node-build:latest
-          mkdir -p ${GITHUB.WORKSPACE}/cache
-          touch ${GITHUB.WORKSPACE}/cache/${{ env.CACHE_KEY_BUILD }}
+          mkdir -p ${GITHUB_WORKSPACE}/cache
+          touch ${GITHUB_WORKSPACE}/cache/${{ env.CACHE_KEY_BUILD }}
 
 
   decorator-checks:
