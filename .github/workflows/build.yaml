@@ -12,7 +12,7 @@ jobs:
       - name: Set outputs
         id: cache
         run: |
-          LINT_DOCKERFILE_HASH=${{ hashFiles('.github/workflows/build/Dockerfile') }}
+          LINT_DOCKERFILE_HASH=${{ hashFiles('.github/workflows/lint/Dockerfile') }}
           echo "::set-output name=CACHE_KEY_LINT::$LINT_DOCKERFILE_HASH"
            
   build-lint-image:
@@ -37,6 +37,7 @@ jobs:
           docker build -f .github/workflows/lint/Dockerfile --no-cache -t ${GITHUB_REPOSITORY}/indy-node-lint:${CACHE_KEY_LINT} .
           docker tag ${GITHUB_REPOSITORY}/indy-node-lint:${CACHE_KEY_LINT} ghcr.io/${GITHUB_REPOSITORY}/indy-node-lint:latest
           docker push ghcr.io/${GITHUB_REPOSITORY}/indy-node-lint:latest
+          mkdir -p /tmp/imgcache
           touch /tmp/imgcache/${CACHE_KEY_LINT}
 
 
