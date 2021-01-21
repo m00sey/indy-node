@@ -43,7 +43,7 @@ jobs:
 
           docker build -f .github/workflows/lint/Dockerfile --no-cache -t ${GITHUB_REPOSITORY}/${DOCKER_IMG_NAME_LINT} .
           docker tag ${GITHUB_REPOSITORY}/${DOCKER_IMG_NAME_LINT} ghcr.io/${GITHUB_REPOSITORY}:${DOCKER_IMG_NAME_LINT}
-          docker push ghcr.io/${GITHUB_REPOSITORY}:$DOCKER_IMG_NAME_LINT
+          docker push ghcr.io/${GITHUB_REPOSITORY}/$DOCKER_IMG_NAME_LINT
 
 
   decorator-checks:
