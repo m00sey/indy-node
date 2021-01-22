@@ -103,7 +103,6 @@ jobs:
 
       - name: Install dependencies
         run: pip3 install .[tests] && python3 -m pytest
-        continue-on-error: true
 
       - name: Run Indy Common tests
         run: python3 -m pytest -l -m ${{ matrix.module }} -vv --junitxml=test-result-common-${{ matrix.module }}.xml indy_common
