@@ -4,16 +4,13 @@ LABEL maintainer="Hyperledger <hyperledger-indy@lists.hyperledger.org>"
 RUN apt-get update && apt-get dist-upgrade -y
 
 # very common packages
-RUN apt-get update && apt-get install -y \
+RUN apt-get install -y \
     git \
     wget \
     vim \
     apt-transport-https \
     ca-certificates \
-    apt-utils
-
-# python
-RUN apt-get update && apt-get install -y \
+    apt-utils \
     python3.5 \
     python3-pip \
     python-setuptools
@@ -40,16 +37,12 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CE7709D068DB5E88 &&
 
 RUN indy_image_clean
 
-# indy repos
 RUN echo "deb https://repo.sovrin.org/sdk/deb xenial master" >> /etc/apt/sources.list && \
     apt-get update
 
-# set highest priority for indy sdk packages in core repo
-# COPY ./indy-core-repo.preferences /etc/apt/preferences.d/indy-core-repo
 RUN echo "Package: /indy-crypto/ /libindy/\n\
 Pin: release l=Indy Main Repository\n\
 Pin-Priority: 1000" >> /etc/apt/preferences.d/indy-core-repo
-
 
 RUN apt-get update -y && apt-get install -y \
     python3-nacl \
