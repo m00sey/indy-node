@@ -43,7 +43,10 @@ RUN echo "deb https://repo.sovrin.org/sdk/deb xenial master" >> /etc/apt/sources
     apt-get update
 
 # set highest priority for indy sdk packages in core repo
-COPY indy-core-repo.preferences /etc/apt/preferences.d/indy-core-repo
+# COPY ./indy-core-repo.preferences /etc/apt/preferences.d/indy-core-repo
+RUN echo "Package: /indy-crypto/ /libindy/\n\
+    Pin: release l=Indy Main Repository\n\
+    Pin-Priority: 1000" >> /etc/apt/preferences.d/indy-core-repo
 
 
 RUN apt-get update -y && apt-get install -y \
