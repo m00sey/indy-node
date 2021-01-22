@@ -19,8 +19,7 @@ RUN apt-get install -y \
 RUN pip3 install -U \ 
     'pip<10.0.0' \
     setuptools \
-    virtualenv \
-    pytest
+    virtualenv
 
 RUN echo "#!/bin/bash\n\
 set -e\n\
