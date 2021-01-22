@@ -3,15 +3,17 @@ LABEL maintainer="Hyperledger <hyperledger-indy@lists.hyperledger.org>"
 
 RUN apt-get update && apt-get dist-upgrade -y
 
-# very common packages
-RUN apt-get install -y \
+RUN apt install software-properties-common -y
+RUN add-apt-repository ppa:deadsnakes/ppa -y
+
+RUN apt-get update && apt-get install -y \
     git \
     wget \
     vim \
     apt-transport-https \
     ca-certificates \
     apt-utils \
-    python3.8 \
+    python3.6 \
     python3-pip \
     python-setuptools
     
