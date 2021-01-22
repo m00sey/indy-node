@@ -11,7 +11,7 @@ RUN apt-get install -y \
     apt-transport-https \
     ca-certificates \
     apt-utils \
-    python3.5 \
+    python3.6 \
     python3-pip \
     python-setuptools
     
