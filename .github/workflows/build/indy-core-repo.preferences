@@ -1,3 +1,0 @@
-Package: /indy-crypto/ /libindy/
-Pin: release l=Indy Main Repository
-Pin-Priority: 1000
