@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 LABEL maintainer="Hyperledger <hyperledger-indy@lists.hyperledger.org>"
 
 RUN apt-get update && apt-get dist-upgrade -y
@@ -32,12 +32,12 @@ RUN chmod 755 /usr/local/bin/indy_image_clean
 RUN indy_image_clean
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CE7709D068DB5E88 && \
-    echo "deb https://repo.sovrin.org/deb xenial master" >> /etc/apt/sources.list && \
+    echo "deb https://repo.sovrin.org/deb bionic master" >> /etc/apt/sources.list && \
     apt-get update
 
 RUN indy_image_clean
 
-RUN echo "deb https://repo.sovrin.org/sdk/deb xenial master" >> /etc/apt/sources.list && \
+RUN echo "deb https://repo.sovrin.org/sdk/deb bionic master" >> /etc/apt/sources.list && \
     apt-get update
 
 RUN echo "Package: /indy-crypto/ /libindy/\n\

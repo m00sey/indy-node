@@ -72,7 +72,7 @@ jobs:
     needs: 
       - build-test-image
       - lint
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     container:
       image: ghcr.io/${{ github.repository }}/indy-node-build
     outputs:
@@ -91,7 +91,7 @@ jobs:
   indy_common:
     name: Build Indy Common
     needs: decorator-checks
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     container:
       image: ghcr.io/${{ github.repository }}/indy-node-build
     strategy:
