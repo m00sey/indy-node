@@ -1,0 +1,3415 @@
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="71" name="pytest" skips="2" tests="75" time="3.104"><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="11" name="test_send_and_get_nym_positive[TRUSTEE-TRUSTEE]" time="0.005312681198120117"><failure message="indy.error.CommonIOError">writer_role = &apos;TRUSTEE&apos;, reader_role = &apos;TRUSTEE&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_nym_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;TRUSTEE&apos;
+writer_role = &apos;TRUSTEE&apos;
+
+acceptance/tests/test_ledger.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="11" name="test_send_and_get_nym_positive[TRUSTEE-STEWARD]" time="0.001646280288696289"><failure message="indy.error.CommonIOError">writer_role = &apos;STEWARD&apos;, reader_role = &apos;TRUSTEE&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_nym_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;TRUSTEE&apos;
+writer_role = &apos;STEWARD&apos;
+
+acceptance/tests/test_ledger.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="11" name="test_send_and_get_nym_positive[TRUSTEE-ENDORSER]" time="0.0019121170043945312"><failure message="indy.error.CommonIOError">writer_role = &apos;ENDORSER&apos;, reader_role = &apos;TRUSTEE&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_nym_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;TRUSTEE&apos;
+writer_role = &apos;ENDORSER&apos;
+
+acceptance/tests/test_ledger.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="11" name="test_send_and_get_nym_positive[STEWARD-TRUSTEE]" time="0.0018110275268554688"><failure message="indy.error.CommonIOError">writer_role = &apos;TRUSTEE&apos;, reader_role = &apos;STEWARD&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_nym_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;STEWARD&apos;
+writer_role = &apos;TRUSTEE&apos;
+
+acceptance/tests/test_ledger.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="11" name="test_send_and_get_nym_positive[STEWARD-STEWARD]" time="0.0016541481018066406"><failure message="indy.error.CommonIOError">writer_role = &apos;STEWARD&apos;, reader_role = &apos;STEWARD&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_nym_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;STEWARD&apos;
+writer_role = &apos;STEWARD&apos;
+
+acceptance/tests/test_ledger.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="11" name="test_send_and_get_nym_positive[STEWARD-ENDORSER]" time="0.0020368099212646484"><failure message="indy.error.CommonIOError">writer_role = &apos;ENDORSER&apos;, reader_role = &apos;STEWARD&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_nym_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;STEWARD&apos;
+writer_role = &apos;ENDORSER&apos;
+
+acceptance/tests/test_ledger.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="11" name="test_send_and_get_nym_positive[ENDORSER-TRUSTEE]" time="0.0018742084503173828"><failure message="indy.error.CommonIOError">writer_role = &apos;TRUSTEE&apos;, reader_role = &apos;ENDORSER&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_nym_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;ENDORSER&apos;
+writer_role = &apos;TRUSTEE&apos;
+
+acceptance/tests/test_ledger.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="11" name="test_send_and_get_nym_positive[ENDORSER-STEWARD]" time="0.0015988349914550781"><failure message="indy.error.CommonIOError">writer_role = &apos;STEWARD&apos;, reader_role = &apos;ENDORSER&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_nym_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;ENDORSER&apos;
+writer_role = &apos;STEWARD&apos;
+
+acceptance/tests/test_ledger.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="11" name="test_send_and_get_nym_positive[ENDORSER-ENDORSER]" time="0.0016100406646728516"><failure message="indy.error.CommonIOError">writer_role = &apos;ENDORSER&apos;, reader_role = &apos;ENDORSER&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_nym_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;ENDORSER&apos;
+writer_role = &apos;ENDORSER&apos;
+
+acceptance/tests/test_ledger.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="11" name="test_send_and_get_nym_positive[None-TRUSTEE]" time="0.0017452239990234375"><failure message="indy.error.CommonIOError">writer_role = &apos;TRUSTEE&apos;, reader_role = None
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_nym_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = None
+writer_role = &apos;TRUSTEE&apos;
+
+acceptance/tests/test_ledger.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="11" name="test_send_and_get_nym_positive[None-STEWARD]" time="0.001596689224243164"><failure message="indy.error.CommonIOError">writer_role = &apos;STEWARD&apos;, reader_role = None
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_nym_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = None
+writer_role = &apos;STEWARD&apos;
+
+acceptance/tests/test_ledger.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="11" name="test_send_and_get_nym_positive[None-ENDORSER]" time="0.0019528865814208984"><failure message="indy.error.CommonIOError">writer_role = &apos;ENDORSER&apos;, reader_role = None
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_nym_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = None
+writer_role = &apos;ENDORSER&apos;
+
+acceptance/tests/test_ledger.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="40" name="test_send_and_get_nym_negative[{}]" time="0.001821756362915039"><failure message="indy.error.CommonIOError">submitter_seed = &apos;{}&apos;
+
+    @pytest.mark.parametrize(&apos;submitter_seed&apos;, [&apos;{}&apos;,
+                                                random_did_and_json()[1],
+                                                random_seed_and_json()[1],
+                                                ])
+    @pytest.mark.asyncio
+    async def test_send_and_get_nym_negative(submitter_seed):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+submitter_seed = &apos;{}&apos;
+
+acceptance/tests/test_ledger.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="40" name="test_send_and_get_nym_negative[{&quot;did&quot;: &quot;DzbeurvPDFc2dTwQMaDYCo&quot;}]" time="0.0016679763793945312"><failure message="indy.error.CommonIOError">submitter_seed = &apos;{&quot;did&quot;: &quot;DzbeurvPDFc2dTwQMaDYCo&quot;}&apos;
+
+    @pytest.mark.parametrize(&apos;submitter_seed&apos;, [&apos;{}&apos;,
+                                                random_did_and_json()[1],
+                                                random_seed_and_json()[1],
+                                                ])
+    @pytest.mark.asyncio
+    async def test_send_and_get_nym_negative(submitter_seed):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+submitter_seed = &apos;{&quot;did&quot;: &quot;DzbeurvPDFc2dTwQMaDYCo&quot;}&apos;
+
+acceptance/tests/test_ledger.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="40" name="test_send_and_get_nym_negative[{&quot;seed&quot;: &quot;38sdoVDqbj5P8fbKP7gjUfwgqrKPNoye&quot;}]" time="0.0018031597137451172"><failure message="indy.error.CommonIOError">submitter_seed = &apos;{&quot;seed&quot;: &quot;38sdoVDqbj5P8fbKP7gjUfwgqrKPNoye&quot;}&apos;
+
+    @pytest.mark.parametrize(&apos;submitter_seed&apos;, [&apos;{}&apos;,
+                                                random_did_and_json()[1],
+                                                random_seed_and_json()[1],
+                                                ])
+    @pytest.mark.asyncio
+    async def test_send_and_get_nym_negative(submitter_seed):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+submitter_seed = &apos;{&quot;seed&quot;: &quot;38sdoVDqbj5P8fbKP7gjUfwgqrKPNoye&quot;}&apos;
+
+acceptance/tests/test_ledger.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="66" name="test_send_and_get_attrib_positive[e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-None-None]" time="0.0018069744110107422"><failure message="indy.error.CommonIOError">xhash = &apos;e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&apos;, raw = None, enc = None
+
+    @pytest.mark.parametrize(&apos;xhash, raw, enc&apos;, [
+        (hashlib.sha256().hexdigest(), None, None),
+        (None, json.dumps({&apos;key&apos;: &apos;value&apos;}), None),
+        (None, None, &apos;ENCRYPTED_STRING&apos;)
+    ])
+    @pytest.mark.asyncio
+    async def test_send_and_get_attrib_positive(xhash, raw, enc):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+enc        = None
+raw        = None
+xhash      = &apos;e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&apos;
+
+acceptance/tests/test_ledger.py:75: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="66" name="test_send_and_get_attrib_positive[None-{&quot;key&quot;: &quot;value&quot;}-None]" time="0.0018723011016845703"><failure message="indy.error.CommonIOError">xhash = None, raw = &apos;{&quot;key&quot;: &quot;value&quot;}&apos;, enc = None
+
+    @pytest.mark.parametrize(&apos;xhash, raw, enc&apos;, [
+        (hashlib.sha256().hexdigest(), None, None),
+        (None, json.dumps({&apos;key&apos;: &apos;value&apos;}), None),
+        (None, None, &apos;ENCRYPTED_STRING&apos;)
+    ])
+    @pytest.mark.asyncio
+    async def test_send_and_get_attrib_positive(xhash, raw, enc):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+enc        = None
+raw        = &apos;{&quot;key&quot;: &quot;value&quot;}&apos;
+xhash      = None
+
+acceptance/tests/test_ledger.py:75: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="66" name="test_send_and_get_attrib_positive[None-None-ENCRYPTED_STRING]" time="0.0018627643585205078"><failure message="indy.error.CommonIOError">xhash = None, raw = None, enc = &apos;ENCRYPTED_STRING&apos;
+
+    @pytest.mark.parametrize(&apos;xhash, raw, enc&apos;, [
+        (hashlib.sha256().hexdigest(), None, None),
+        (None, json.dumps({&apos;key&apos;: &apos;value&apos;}), None),
+        (None, None, &apos;ENCRYPTED_STRING&apos;)
+    ])
+    @pytest.mark.asyncio
+    async def test_send_and_get_attrib_positive(xhash, raw, enc):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+enc        = &apos;ENCRYPTED_STRING&apos;
+raw        = None
+xhash      = None
+
+acceptance/tests/test_ledger.py:75: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="90" name="test_send_and_get_attrib_negative[None-None-None-IndyError]" time="0.001969575881958008"><failure message="indy.error.CommonIOError">xhash = None, raw = None, enc = None, error = &lt;class &apos;indy.error.IndyError&apos;&gt;
+
+    @pytest.mark.parametrize(&apos;xhash, raw, enc, error&apos;, [
+        (None, None, None, IndyError),
+        (hashlib.sha256().hexdigest(), json.dumps({&apos;key&apos;: &apos;value&apos;}), None, None),
+        (None, json.dumps({&apos;key&apos;: &apos;value&apos;}), &apos;ENCRYPTED_STRING&apos;, None),
+        (hashlib.sha256().hexdigest(), None, &apos;ENCRYPTED_STRING&apos;, None),
+        (hashlib.sha256().hexdigest(), json.dumps({&apos;key&apos;: &apos;value&apos;}), &apos;ENCRYPTED_STRING&apos;, None)
+    ])
+    @pytest.mark.asyncio
+    async def test_send_and_get_attrib_negative(xhash, raw, enc, error):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+enc        = None
+error      = &lt;class &apos;indy.error.IndyError&apos;&gt;
+raw        = None
+xhash      = None
+
+acceptance/tests/test_ledger.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="90" name="test_send_and_get_attrib_negative[e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-{&quot;key&quot;: &quot;value&quot;}-None-None]" time="0.0018687248229980469"><failure message="indy.error.CommonIOError">xhash = &apos;e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&apos;, raw = &apos;{&quot;key&quot;: &quot;value&quot;}&apos;
+enc = None, error = None
+
+    @pytest.mark.parametrize(&apos;xhash, raw, enc, error&apos;, [
+        (None, None, None, IndyError),
+        (hashlib.sha256().hexdigest(), json.dumps({&apos;key&apos;: &apos;value&apos;}), None, None),
+        (None, json.dumps({&apos;key&apos;: &apos;value&apos;}), &apos;ENCRYPTED_STRING&apos;, None),
+        (hashlib.sha256().hexdigest(), None, &apos;ENCRYPTED_STRING&apos;, None),
+        (hashlib.sha256().hexdigest(), json.dumps({&apos;key&apos;: &apos;value&apos;}), &apos;ENCRYPTED_STRING&apos;, None)
+    ])
+    @pytest.mark.asyncio
+    async def test_send_and_get_attrib_negative(xhash, raw, enc, error):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+enc        = None
+error      = None
+raw        = &apos;{&quot;key&quot;: &quot;value&quot;}&apos;
+xhash      = &apos;e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&apos;
+
+acceptance/tests/test_ledger.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="90" name="test_send_and_get_attrib_negative[None-{&quot;key&quot;: &quot;value&quot;}-ENCRYPTED_STRING-None]" time="0.0019276142120361328"><failure message="indy.error.CommonIOError">xhash = None, raw = &apos;{&quot;key&quot;: &quot;value&quot;}&apos;, enc = &apos;ENCRYPTED_STRING&apos;, error = None
+
+    @pytest.mark.parametrize(&apos;xhash, raw, enc, error&apos;, [
+        (None, None, None, IndyError),
+        (hashlib.sha256().hexdigest(), json.dumps({&apos;key&apos;: &apos;value&apos;}), None, None),
+        (None, json.dumps({&apos;key&apos;: &apos;value&apos;}), &apos;ENCRYPTED_STRING&apos;, None),
+        (hashlib.sha256().hexdigest(), None, &apos;ENCRYPTED_STRING&apos;, None),
+        (hashlib.sha256().hexdigest(), json.dumps({&apos;key&apos;: &apos;value&apos;}), &apos;ENCRYPTED_STRING&apos;, None)
+    ])
+    @pytest.mark.asyncio
+    async def test_send_and_get_attrib_negative(xhash, raw, enc, error):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+enc        = &apos;ENCRYPTED_STRING&apos;
+error      = None
+raw        = &apos;{&quot;key&quot;: &quot;value&quot;}&apos;
+xhash      = None
+
+acceptance/tests/test_ledger.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="90" name="test_send_and_get_attrib_negative[e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-None-ENCRYPTED_STRING-None]" time="0.0019621849060058594"><failure message="indy.error.CommonIOError">xhash = &apos;e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&apos;, raw = None
+enc = &apos;ENCRYPTED_STRING&apos;, error = None
+
+    @pytest.mark.parametrize(&apos;xhash, raw, enc, error&apos;, [
+        (None, None, None, IndyError),
+        (hashlib.sha256().hexdigest(), json.dumps({&apos;key&apos;: &apos;value&apos;}), None, None),
+        (None, json.dumps({&apos;key&apos;: &apos;value&apos;}), &apos;ENCRYPTED_STRING&apos;, None),
+        (hashlib.sha256().hexdigest(), None, &apos;ENCRYPTED_STRING&apos;, None),
+        (hashlib.sha256().hexdigest(), json.dumps({&apos;key&apos;: &apos;value&apos;}), &apos;ENCRYPTED_STRING&apos;, None)
+    ])
+    @pytest.mark.asyncio
+    async def test_send_and_get_attrib_negative(xhash, raw, enc, error):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+enc        = &apos;ENCRYPTED_STRING&apos;
+error      = None
+raw        = None
+xhash      = &apos;e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&apos;
+
+acceptance/tests/test_ledger.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="90" name="test_send_and_get_attrib_negative[e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-{&quot;key&quot;: &quot;value&quot;}-ENCRYPTED_STRING-None]" time="0.001783132553100586"><failure message="indy.error.CommonIOError">xhash = &apos;e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&apos;, raw = &apos;{&quot;key&quot;: &quot;value&quot;}&apos;
+enc = &apos;ENCRYPTED_STRING&apos;, error = None
+
+    @pytest.mark.parametrize(&apos;xhash, raw, enc, error&apos;, [
+        (None, None, None, IndyError),
+        (hashlib.sha256().hexdigest(), json.dumps({&apos;key&apos;: &apos;value&apos;}), None, None),
+        (None, json.dumps({&apos;key&apos;: &apos;value&apos;}), &apos;ENCRYPTED_STRING&apos;, None),
+        (hashlib.sha256().hexdigest(), None, &apos;ENCRYPTED_STRING&apos;, None),
+        (hashlib.sha256().hexdigest(), json.dumps({&apos;key&apos;: &apos;value&apos;}), &apos;ENCRYPTED_STRING&apos;, None)
+    ])
+    @pytest.mark.asyncio
+    async def test_send_and_get_attrib_negative(xhash, raw, enc, error):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+enc        = &apos;ENCRYPTED_STRING&apos;
+error      = None
+raw        = &apos;{&quot;key&quot;: &quot;value&quot;}&apos;
+xhash      = &apos;e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&apos;
+
+acceptance/tests/test_ledger.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="121" name="test_send_and_get_schema_positive[TRUSTEE-TRUSTEE]" time="0.0017507076263427734"><failure message="indy.error.CommonIOError">writer_role = &apos;TRUSTEE&apos;, reader_role = &apos;TRUSTEE&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_schema_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;TRUSTEE&apos;
+writer_role = &apos;TRUSTEE&apos;
+
+acceptance/tests/test_ledger.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="121" name="test_send_and_get_schema_positive[TRUSTEE-STEWARD]" time="0.0018448829650878906"><failure message="indy.error.CommonIOError">writer_role = &apos;STEWARD&apos;, reader_role = &apos;TRUSTEE&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_schema_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;TRUSTEE&apos;
+writer_role = &apos;STEWARD&apos;
+
+acceptance/tests/test_ledger.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="121" name="test_send_and_get_schema_positive[TRUSTEE-ENDORSER]" time="0.0020263195037841797"><failure message="indy.error.CommonIOError">writer_role = &apos;ENDORSER&apos;, reader_role = &apos;TRUSTEE&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_schema_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;TRUSTEE&apos;
+writer_role = &apos;ENDORSER&apos;
+
+acceptance/tests/test_ledger.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="121" name="test_send_and_get_schema_positive[STEWARD-TRUSTEE]" time="0.0022897720336914062"><failure message="indy.error.CommonIOError">writer_role = &apos;TRUSTEE&apos;, reader_role = &apos;STEWARD&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_schema_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;STEWARD&apos;
+writer_role = &apos;TRUSTEE&apos;
+
+acceptance/tests/test_ledger.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="121" name="test_send_and_get_schema_positive[STEWARD-STEWARD]" time="0.0019085407257080078"><failure message="indy.error.CommonIOError">writer_role = &apos;STEWARD&apos;, reader_role = &apos;STEWARD&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_schema_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;STEWARD&apos;
+writer_role = &apos;STEWARD&apos;
+
+acceptance/tests/test_ledger.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="121" name="test_send_and_get_schema_positive[STEWARD-ENDORSER]" time="0.001665353775024414"><failure message="indy.error.CommonIOError">writer_role = &apos;ENDORSER&apos;, reader_role = &apos;STEWARD&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_schema_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;STEWARD&apos;
+writer_role = &apos;ENDORSER&apos;
+
+acceptance/tests/test_ledger.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="121" name="test_send_and_get_schema_positive[ENDORSER-TRUSTEE]" time="0.0016736984252929688"><failure message="indy.error.CommonIOError">writer_role = &apos;TRUSTEE&apos;, reader_role = &apos;ENDORSER&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_schema_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;ENDORSER&apos;
+writer_role = &apos;TRUSTEE&apos;
+
+acceptance/tests/test_ledger.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="121" name="test_send_and_get_schema_positive[ENDORSER-STEWARD]" time="0.001667022705078125"><failure message="indy.error.CommonIOError">writer_role = &apos;STEWARD&apos;, reader_role = &apos;ENDORSER&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_schema_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;ENDORSER&apos;
+writer_role = &apos;STEWARD&apos;
+
+acceptance/tests/test_ledger.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="121" name="test_send_and_get_schema_positive[ENDORSER-ENDORSER]" time="0.0016765594482421875"><failure message="indy.error.CommonIOError">writer_role = &apos;ENDORSER&apos;, reader_role = &apos;ENDORSER&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_schema_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;ENDORSER&apos;
+writer_role = &apos;ENDORSER&apos;
+
+acceptance/tests/test_ledger.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="121" name="test_send_and_get_schema_positive[None-TRUSTEE]" time="0.0018215179443359375"><failure message="indy.error.CommonIOError">writer_role = &apos;TRUSTEE&apos;, reader_role = None
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_schema_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = None
+writer_role = &apos;TRUSTEE&apos;
+
+acceptance/tests/test_ledger.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="121" name="test_send_and_get_schema_positive[None-STEWARD]" time="0.002001047134399414"><failure message="indy.error.CommonIOError">writer_role = &apos;STEWARD&apos;, reader_role = None
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_schema_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = None
+writer_role = &apos;STEWARD&apos;
+
+acceptance/tests/test_ledger.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="121" name="test_send_and_get_schema_positive[None-ENDORSER]" time="0.001688241958618164"><failure message="indy.error.CommonIOError">writer_role = &apos;ENDORSER&apos;, reader_role = None
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_schema_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = None
+writer_role = &apos;ENDORSER&apos;
+
+acceptance/tests/test_ledger.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="150" name="test_send_and_get_schema_negative" time="0.0003075599670410156"><skipped message="IS-932" type="pytest.skip">acceptance/tests/test_ledger.py:150: IS-932</skipped></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="167" name="test_send_and_get_cred_def_positive[TRUSTEE-TRUSTEE]" time="0.0017292499542236328"><failure message="indy.error.CommonIOError">writer_role = &apos;TRUSTEE&apos;, reader_role = &apos;TRUSTEE&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_cred_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;TRUSTEE&apos;
+writer_role = &apos;TRUSTEE&apos;
+
+acceptance/tests/test_ledger.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="167" name="test_send_and_get_cred_def_positive[TRUSTEE-STEWARD]" time="0.0018107891082763672"><failure message="indy.error.CommonIOError">writer_role = &apos;STEWARD&apos;, reader_role = &apos;TRUSTEE&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_cred_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;TRUSTEE&apos;
+writer_role = &apos;STEWARD&apos;
+
+acceptance/tests/test_ledger.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="167" name="test_send_and_get_cred_def_positive[TRUSTEE-ENDORSER]" time="0.0016930103302001953"><failure message="indy.error.CommonIOError">writer_role = &apos;ENDORSER&apos;, reader_role = &apos;TRUSTEE&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_cred_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;TRUSTEE&apos;
+writer_role = &apos;ENDORSER&apos;
+
+acceptance/tests/test_ledger.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="167" name="test_send_and_get_cred_def_positive[STEWARD-TRUSTEE]" time="0.0019378662109375"><failure message="indy.error.CommonIOError">writer_role = &apos;TRUSTEE&apos;, reader_role = &apos;STEWARD&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_cred_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;STEWARD&apos;
+writer_role = &apos;TRUSTEE&apos;
+
+acceptance/tests/test_ledger.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="167" name="test_send_and_get_cred_def_positive[STEWARD-STEWARD]" time="0.002363443374633789"><failure message="indy.error.CommonIOError">writer_role = &apos;STEWARD&apos;, reader_role = &apos;STEWARD&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_cred_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;STEWARD&apos;
+writer_role = &apos;STEWARD&apos;
+
+acceptance/tests/test_ledger.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="167" name="test_send_and_get_cred_def_positive[STEWARD-ENDORSER]" time="0.0017254352569580078"><failure message="indy.error.CommonIOError">writer_role = &apos;ENDORSER&apos;, reader_role = &apos;STEWARD&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_cred_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;STEWARD&apos;
+writer_role = &apos;ENDORSER&apos;
+
+acceptance/tests/test_ledger.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="167" name="test_send_and_get_cred_def_positive[ENDORSER-TRUSTEE]" time="0.0017261505126953125"><failure message="indy.error.CommonIOError">writer_role = &apos;TRUSTEE&apos;, reader_role = &apos;ENDORSER&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_cred_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;ENDORSER&apos;
+writer_role = &apos;TRUSTEE&apos;
+
+acceptance/tests/test_ledger.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="167" name="test_send_and_get_cred_def_positive[ENDORSER-STEWARD]" time="0.0017864704132080078"><failure message="indy.error.CommonIOError">writer_role = &apos;STEWARD&apos;, reader_role = &apos;ENDORSER&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_cred_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;ENDORSER&apos;
+writer_role = &apos;STEWARD&apos;
+
+acceptance/tests/test_ledger.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="167" name="test_send_and_get_cred_def_positive[ENDORSER-ENDORSER]" time="0.0017199516296386719"><failure message="indy.error.CommonIOError">writer_role = &apos;ENDORSER&apos;, reader_role = &apos;ENDORSER&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_cred_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;ENDORSER&apos;
+writer_role = &apos;ENDORSER&apos;
+
+acceptance/tests/test_ledger.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="167" name="test_send_and_get_cred_def_positive[None-TRUSTEE]" time="0.0017962455749511719"><failure message="indy.error.CommonIOError">writer_role = &apos;TRUSTEE&apos;, reader_role = None
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_cred_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = None
+writer_role = &apos;TRUSTEE&apos;
+
+acceptance/tests/test_ledger.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="167" name="test_send_and_get_cred_def_positive[None-STEWARD]" time="0.001865386962890625"><failure message="indy.error.CommonIOError">writer_role = &apos;STEWARD&apos;, reader_role = None
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_cred_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = None
+writer_role = &apos;STEWARD&apos;
+
+acceptance/tests/test_ledger.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="167" name="test_send_and_get_cred_def_positive[None-ENDORSER]" time="0.0021283626556396484"><failure message="indy.error.CommonIOError">writer_role = &apos;ENDORSER&apos;, reader_role = None
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_cred_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = None
+writer_role = &apos;ENDORSER&apos;
+
+acceptance/tests/test_ledger.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="198" name="test_send_and_get_cred_def_negative" time="0.0007159709930419922"><skipped message="IS-932" type="pytest.skip">acceptance/tests/test_ledger.py:198: IS-932</skipped></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="215" name="test_send_and_get_revoc_reg_def_positive[TRUSTEE-TRUSTEE]" time="0.0018620491027832031"><failure message="indy.error.CommonIOError">writer_role = &apos;TRUSTEE&apos;, reader_role = &apos;TRUSTEE&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;TRUSTEE&apos;
+writer_role = &apos;TRUSTEE&apos;
+
+acceptance/tests/test_ledger.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="215" name="test_send_and_get_revoc_reg_def_positive[TRUSTEE-STEWARD]" time="0.001783609390258789"><failure message="indy.error.CommonIOError">writer_role = &apos;STEWARD&apos;, reader_role = &apos;TRUSTEE&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;TRUSTEE&apos;
+writer_role = &apos;STEWARD&apos;
+
+acceptance/tests/test_ledger.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="215" name="test_send_and_get_revoc_reg_def_positive[TRUSTEE-ENDORSER]" time="0.002025127410888672"><failure message="indy.error.CommonIOError">writer_role = &apos;ENDORSER&apos;, reader_role = &apos;TRUSTEE&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;TRUSTEE&apos;
+writer_role = &apos;ENDORSER&apos;
+
+acceptance/tests/test_ledger.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="215" name="test_send_and_get_revoc_reg_def_positive[STEWARD-TRUSTEE]" time="0.0016357898712158203"><failure message="indy.error.CommonIOError">writer_role = &apos;TRUSTEE&apos;, reader_role = &apos;STEWARD&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;STEWARD&apos;
+writer_role = &apos;TRUSTEE&apos;
+
+acceptance/tests/test_ledger.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="215" name="test_send_and_get_revoc_reg_def_positive[STEWARD-STEWARD]" time="0.0017910003662109375"><failure message="indy.error.CommonIOError">writer_role = &apos;STEWARD&apos;, reader_role = &apos;STEWARD&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;STEWARD&apos;
+writer_role = &apos;STEWARD&apos;
+
+acceptance/tests/test_ledger.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="215" name="test_send_and_get_revoc_reg_def_positive[STEWARD-ENDORSER]" time="0.0017385482788085938"><failure message="indy.error.CommonIOError">writer_role = &apos;ENDORSER&apos;, reader_role = &apos;STEWARD&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;STEWARD&apos;
+writer_role = &apos;ENDORSER&apos;
+
+acceptance/tests/test_ledger.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="215" name="test_send_and_get_revoc_reg_def_positive[ENDORSER-TRUSTEE]" time="0.0016357898712158203"><failure message="indy.error.CommonIOError">writer_role = &apos;TRUSTEE&apos;, reader_role = &apos;ENDORSER&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;ENDORSER&apos;
+writer_role = &apos;TRUSTEE&apos;
+
+acceptance/tests/test_ledger.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="215" name="test_send_and_get_revoc_reg_def_positive[ENDORSER-STEWARD]" time="0.0017209053039550781"><failure message="indy.error.CommonIOError">writer_role = &apos;STEWARD&apos;, reader_role = &apos;ENDORSER&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;ENDORSER&apos;
+writer_role = &apos;STEWARD&apos;
+
+acceptance/tests/test_ledger.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="215" name="test_send_and_get_revoc_reg_def_positive[ENDORSER-ENDORSER]" time="0.00220489501953125"><failure message="indy.error.CommonIOError">writer_role = &apos;ENDORSER&apos;, reader_role = &apos;ENDORSER&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;ENDORSER&apos;
+writer_role = &apos;ENDORSER&apos;
+
+acceptance/tests/test_ledger.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="215" name="test_send_and_get_revoc_reg_def_positive[None-TRUSTEE]" time="0.001781463623046875"><failure message="indy.error.CommonIOError">writer_role = &apos;TRUSTEE&apos;, reader_role = None
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = None
+writer_role = &apos;TRUSTEE&apos;
+
+acceptance/tests/test_ledger.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="215" name="test_send_and_get_revoc_reg_def_positive[None-STEWARD]" time="0.0019812583923339844"><failure message="indy.error.CommonIOError">writer_role = &apos;STEWARD&apos;, reader_role = None
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = None
+writer_role = &apos;STEWARD&apos;
+
+acceptance/tests/test_ledger.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="215" name="test_send_and_get_revoc_reg_def_positive[None-ENDORSER]" time="0.0018587112426757812"><failure message="indy.error.CommonIOError">writer_role = &apos;ENDORSER&apos;, reader_role = None
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_def_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = None
+writer_role = &apos;ENDORSER&apos;
+
+acceptance/tests/test_ledger.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="248" name="test_send_and_get_revoc_reg_def_negative" time="0.0008521080017089844"></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="253" name="test_send_and_get_revoc_reg_entry_positive[TRUSTEE-TRUSTEE]" time="0.00160980224609375"><failure message="indy.error.CommonIOError">writer_role = &apos;TRUSTEE&apos;, reader_role = &apos;TRUSTEE&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_entry_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+        timestamp0 = int(time.time())
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;TRUSTEE&apos;
+timestamp0 = 1611594022
+writer_role = &apos;TRUSTEE&apos;
+
+acceptance/tests/test_ledger.py:260: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="253" name="test_send_and_get_revoc_reg_entry_positive[TRUSTEE-STEWARD]" time="0.0017299652099609375"><failure message="indy.error.CommonIOError">writer_role = &apos;STEWARD&apos;, reader_role = &apos;TRUSTEE&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_entry_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+        timestamp0 = int(time.time())
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;TRUSTEE&apos;
+timestamp0 = 1611594022
+writer_role = &apos;STEWARD&apos;
+
+acceptance/tests/test_ledger.py:260: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="253" name="test_send_and_get_revoc_reg_entry_positive[TRUSTEE-ENDORSER]" time="0.0017809867858886719"><failure message="indy.error.CommonIOError">writer_role = &apos;ENDORSER&apos;, reader_role = &apos;TRUSTEE&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_entry_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+        timestamp0 = int(time.time())
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;TRUSTEE&apos;
+timestamp0 = 1611594022
+writer_role = &apos;ENDORSER&apos;
+
+acceptance/tests/test_ledger.py:260: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="253" name="test_send_and_get_revoc_reg_entry_positive[STEWARD-TRUSTEE]" time="0.0017230510711669922"><failure message="indy.error.CommonIOError">writer_role = &apos;TRUSTEE&apos;, reader_role = &apos;STEWARD&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_entry_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+        timestamp0 = int(time.time())
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;STEWARD&apos;
+timestamp0 = 1611594022
+writer_role = &apos;TRUSTEE&apos;
+
+acceptance/tests/test_ledger.py:260: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="253" name="test_send_and_get_revoc_reg_entry_positive[STEWARD-STEWARD]" time="0.0017070770263671875"><failure message="indy.error.CommonIOError">writer_role = &apos;STEWARD&apos;, reader_role = &apos;STEWARD&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_entry_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+        timestamp0 = int(time.time())
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;STEWARD&apos;
+timestamp0 = 1611594022
+writer_role = &apos;STEWARD&apos;
+
+acceptance/tests/test_ledger.py:260: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="253" name="test_send_and_get_revoc_reg_entry_positive[STEWARD-ENDORSER]" time="0.0017595291137695312"><failure message="indy.error.CommonIOError">writer_role = &apos;ENDORSER&apos;, reader_role = &apos;STEWARD&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_entry_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+        timestamp0 = int(time.time())
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;STEWARD&apos;
+timestamp0 = 1611594022
+writer_role = &apos;ENDORSER&apos;
+
+acceptance/tests/test_ledger.py:260: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="253" name="test_send_and_get_revoc_reg_entry_positive[ENDORSER-TRUSTEE]" time="0.0018794536590576172"><failure message="indy.error.CommonIOError">writer_role = &apos;TRUSTEE&apos;, reader_role = &apos;ENDORSER&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_entry_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+        timestamp0 = int(time.time())
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;ENDORSER&apos;
+timestamp0 = 1611594022
+writer_role = &apos;TRUSTEE&apos;
+
+acceptance/tests/test_ledger.py:260: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="253" name="test_send_and_get_revoc_reg_entry_positive[ENDORSER-STEWARD]" time="0.0017826557159423828"><failure message="indy.error.CommonIOError">writer_role = &apos;STEWARD&apos;, reader_role = &apos;ENDORSER&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_entry_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+        timestamp0 = int(time.time())
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;ENDORSER&apos;
+timestamp0 = 1611594022
+writer_role = &apos;STEWARD&apos;
+
+acceptance/tests/test_ledger.py:260: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="253" name="test_send_and_get_revoc_reg_entry_positive[ENDORSER-ENDORSER]" time="0.0015935897827148438"><failure message="indy.error.CommonIOError">writer_role = &apos;ENDORSER&apos;, reader_role = &apos;ENDORSER&apos;
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_entry_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+        timestamp0 = int(time.time())
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = &apos;ENDORSER&apos;
+timestamp0 = 1611594022
+writer_role = &apos;ENDORSER&apos;
+
+acceptance/tests/test_ledger.py:260: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="253" name="test_send_and_get_revoc_reg_entry_positive[None-TRUSTEE]" time="0.0015974044799804688"><failure message="indy.error.CommonIOError">writer_role = &apos;TRUSTEE&apos;, reader_role = None
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_entry_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+        timestamp0 = int(time.time())
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = None
+timestamp0 = 1611594022
+writer_role = &apos;TRUSTEE&apos;
+
+acceptance/tests/test_ledger.py:260: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="253" name="test_send_and_get_revoc_reg_entry_positive[None-STEWARD]" time="0.0018432140350341797"><failure message="indy.error.CommonIOError">writer_role = &apos;STEWARD&apos;, reader_role = None
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_entry_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+        timestamp0 = int(time.time())
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = None
+timestamp0 = 1611594022
+writer_role = &apos;STEWARD&apos;
+
+acceptance/tests/test_ledger.py:260: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="253" name="test_send_and_get_revoc_reg_entry_positive[None-ENDORSER]" time="0.0016832351684570312"><failure message="indy.error.CommonIOError">writer_role = &apos;ENDORSER&apos;, reader_role = None
+
+    @pytest.mark.parametrize(&apos;writer_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;])
+    @pytest.mark.parametrize(&apos;reader_role&apos;, [&apos;TRUSTEE&apos;, &apos;STEWARD&apos;, &apos;ENDORSER&apos;, None])
+    @pytest.mark.asyncio
+    async def test_send_and_get_revoc_reg_entry_positive(writer_role, reader_role):
+        await pool.set_protocol_version(2)
+        timestamp0 = int(time.time())
+&gt;       pool_handle, _ = await pool_helper()
+
+reader_role = None
+timestamp0 = 1611594023
+writer_role = &apos;ENDORSER&apos;
+
+acceptance/tests/test_ledger.py:260: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+acceptance/tests/utils.py:34: in pool_helper
+    await pool.create_pool_ledger_config(pool_name, pool_config)
+../../../.pyenv/versions/3.5.10/lib/python3.5/site-packages/indy/pool.py:39: in create_pool_ledger_config
+    create_pool_ledger_config.cb)
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:381: in __iter__
+    yield self  # This tells Task to wait for completion.
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/tasks.py:310: in _wakeup
+    future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Future finished exception=CommonIOError()&gt;
+
+    def result(self):
+        &quot;&quot;&quot;Return the result this future represents.
+    
+        If the future has been cancelled, raises CancelledError.  If the
+        future&apos;s result isn&apos;t yet available, raises InvalidStateError.  If
+        the future is done and has an exception set, this exception is raised.
+        &quot;&quot;&quot;
+        if self._state == _CANCELLED:
+            raise CancelledError
+        if self._state != _FINISHED:
+            raise InvalidStateError(&apos;Result is not ready.&apos;)
+        self._log_traceback = False
+        if self._tb_logger is not None:
+            self._tb_logger.clear()
+            self._tb_logger = None
+        if self._exception is not None:
+&gt;           raise self._exception
+E           indy.error.CommonIOError
+
+self       = &lt;Future finished exception=CommonIOError()&gt;
+
+../../../.pyenv/versions/3.5.10/lib/python3.5/asyncio/futures.py:294: CommonIOError</failure></testcase><testcase classname="acceptance.tests.test_ledger" file="acceptance/tests/test_ledger.py" line="292" name="test_send_and_get_revoc_reg_entry_negative" time="0.0008165836334228516"></testcase></testsuite>

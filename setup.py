@@ -27,8 +27,8 @@ with open(metadata['__file__'], 'r') as f:
 
 BASE_DIR = os.path.join(os.path.expanduser("~"), ".indy")
 
-tests_require = ['attrs==19.1.0', 'pytest==3.3.1', 'pytest-xdist==1.22.1', 'pytest-forked==0.2',
-                 'python3-indy==1.15.0', 'pytest-asyncio==0.8.0']
+tests_require = ['attrs==19.1.0', 'pytest==4.0.2', 'pytest-xdist==1.22.1', 'pytest-forked==0.2',
+                 'python3-indy==1.15.0', 'pytest-asyncio==0.10.0', 'pytest-cov']
 
 setup(
     name=metadata['__title__'],
