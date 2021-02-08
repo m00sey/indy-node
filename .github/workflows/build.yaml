@@ -78,6 +78,10 @@ jobs:
     name: Build Indy Node
     needs: build-test-image
     runs-on: ubuntu-18.04
+    # Fix for scacap/action-surefire-report out of memory error:
+    # - https://github.com/ScaCap/action-surefire-report/issues/17
+    env:
+      NODE_OPTIONS: '--max_old_space_size=4096'
     container:
       image: ghcr.io/${{ github.repository }}/indy-node-build
     strategy:
@@ -94,14 +98,26 @@ jobs:
         continue-on-error: true
 
       - name: Run Indy Node ${{ matrix.module }} test slice ${{ matrix.slice }}/${{ strategy.job-total }}
-        run: RUSTPYTHONASYNCIODEBUG=0 python3 runner.py --pytest "python3 -m pytest -l -vv --junitxml=test-result-indy-node-${{ matrix.module }}-${{ matrix.slice }}.xml" --dir "${{ matrix.module }}" --output "test-result-indy-node-${{ matrix.slice }}.txt" --test-only-slice "${{ matrix.slice }}/${{ strategy.job-total }}"
+        id: node-test
+        run: RUSTPYTHONASYNCIODEBUG=0 python3 runner.py --pytest "python3 -m pytest -l -vv" --dir "${{ matrix.module }}" --output "test-result-indy-node-${{ matrix.slice }}.txt" --test-only-slice "${{ matrix.slice }}/${{ strategy.job-total }}"
 
       - name: Publish Test Report
-        uses: scacap/action-surefire-report@v1
+        if: success() || failure()
+        uses: scacap/action-surefire-report@v1.0.7
         with:
-          check_name: Indy Node ${{ matrix.module }} ${{ matrix.slice }}/${{ strategy.job-total }} Test Report
+          check_name: Indy Node ${{ matrix.module }} Test Report for slice ${{ matrix.slice }}/${{ strategy.job-total }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          report_paths: test-result-indy-node-${{ matrix.module }}-${{ matrix.slice }}.xml
+          report_paths: "*-test-results.xml"
+
+      - name: 'Upload Detailed Test Failure Results'
+        # The test runner only emits the detailed test results if the tests fail.
+        if: (steps.node-test.outcome == 'failure') && failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: detailed-test-result-slice-${{ matrix.slice }}
+          path: test-result-indy-node-${{ matrix.slice }}.txt
+          retention-days: 5
+
 
   lint:
     name: Lint
